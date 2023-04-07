@@ -40,6 +40,11 @@ class NavigatorImpl(
         navigateToNavBarDestination(ScreenRoute.InfoUser)
     }
 
+    override fun navigateToCatalog() {
+        navigateToNavBarDestination(ScreenRoute.Catalog)
+    }
+
+
     private fun navigateToNavBarDestination(root: ScreenRoute) {
         navController?.navigate(root.name) {
             popUpTo(navController!!.graph.findStartDestination().id) {

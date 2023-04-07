@@ -13,6 +13,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
 import com.lyadsky.nolimits4webapp.android.features.auth.AuthScreen
+import com.lyadsky.nolimits4webapp.android.features.catalog.CatalogScreen
 import com.lyadsky.nolimits4webapp.android.features.infoUser.InfoUserScreen
 import com.lyadsky.nolimits4webapp.android.features.welcome.WelcomeScreen
 import com.lyadsky.nolimits4webapp.android.features.main.MainScreen
@@ -65,8 +66,11 @@ fun MainNavigationScreen(
             composable(route = ScreenRoute.Register.name) {
                 RegisterScreen()
             }
-            composable(route = ScreenRoute.InfoUser.name){
+            composable(route = ScreenRoute.InfoUser.name) {
                 InfoUserScreen()
+            }
+            composable(route = ScreenRoute.Catalog.name) {
+                CatalogScreen()
             }
         }
     }

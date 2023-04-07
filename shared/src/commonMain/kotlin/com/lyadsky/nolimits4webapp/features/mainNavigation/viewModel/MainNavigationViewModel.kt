@@ -19,6 +19,7 @@ class MainNavigationViewModelImpl(
             ScreenRoute.Profile -> navigator.navigateToProfile()
             ScreenRoute.Auth -> navigator.navigateToAuth()
             ScreenRoute.Register -> navigator.navigateToRegister()
+            ScreenRoute.Catalog -> navigator.navigateToCatalog()
             else -> {}
         }
     }
