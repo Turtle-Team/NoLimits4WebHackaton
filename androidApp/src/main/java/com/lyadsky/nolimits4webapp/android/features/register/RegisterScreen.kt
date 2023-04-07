@@ -9,12 +9,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.lyadsky.nolimits4webapp.android.features.views.bars.StageBar
 import com.lyadsky.nolimits4webapp.android.features.views.buttons.CommonButton
 import com.lyadsky.nolimits4webapp.android.features.views.edit_texts.CommonEditText
 
 @Composable
 fun RegisterScreen() {
-    Column(Modifier.fillMaxSize().padding(top = 127.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        Modifier
+            .fillMaxSize()
+            .padding(top = 50.dp), horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+
+        StageBar(number = 1)
+        Divider(Modifier.padding(top = 52.dp), color = Color.White)
 
         CommonEditText(title = "Имя пользователя")
         Divider(Modifier.padding(top = 30.dp), color = Color.White)
@@ -26,8 +34,8 @@ fun RegisterScreen() {
 
         Divider(Modifier.padding(top = 140.dp), color = Color.White)
         CommonButton(text = "Дальше") {
-            
+
         }
-        
+
     }
 }
