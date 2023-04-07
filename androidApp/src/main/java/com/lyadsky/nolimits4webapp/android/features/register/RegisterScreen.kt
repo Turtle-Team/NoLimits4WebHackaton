@@ -7,12 +7,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
 import com.lyadsky.nolimits4webapp.android.features.views.bars.StageBar
 import com.lyadsky.nolimits4webapp.android.features.views.buttons.CommonButton
 import com.lyadsky.nolimits4webapp.android.features.views.edit_texts.CommonEditText
+import com.lyadsky.nolimits4webapp.features.register.viewModel.RegisterViewModel
+import com.lyadsky.nolimits4webapp.features.welcome.viewModel.WelcomeViewModel
+import org.koin.androidx.compose.getViewModel
+import org.koin.core.qualifier.named
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
+fun RegisterScreen(
+    viewModelWrapper: ViewModelWrapper<RegisterViewModel> =
+        getViewModel(named("RegisterViewModel"))
+) {
+    Column(
 fun RegisterScreen() {
     LazyColumn(
         Modifier
@@ -38,7 +48,7 @@ fun RegisterScreen() {
         }
         item {
             CommonButton(text = "Дальше") {
-
+                viewModelWrapper.viewModel.onNextClick()
             }
         }
 
