@@ -5,12 +5,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.Text
-import androidx.compose.material.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -20,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun CommonEditText(title: String) {
+fun CommonEditText(title: String, placeholder: String? = title, isCenterText: Boolean? = false) {
     var text by remember { mutableStateOf(TextFieldValue("")) }
 
     Column {
@@ -28,7 +26,7 @@ fun CommonEditText(title: String) {
             text = title, style = TextStyle(
                 fontSize = 24.sp,
                 fontWeight = FontWeight(700),
-                color = Color(0xFF9094FB)
+                color = Color(0xFF474992)
             ),
             modifier = Modifier.padding(bottom = 20.dp)
         )
@@ -63,10 +61,10 @@ fun CommonEditText(title: String) {
                 decorationBox = { innerTextField ->
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Start
+                        horizontalArrangement = if (isCenterText == true) Arrangement.Center else Arrangement.Start //TODO поправить
                     ) {
                         Text(
-                            text = title, style = TextStyle(
+                            text = placeholder.toString(), style = TextStyle(
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFD9D9D9),

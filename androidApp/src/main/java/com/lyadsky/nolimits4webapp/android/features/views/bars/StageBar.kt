@@ -65,12 +65,12 @@ fun StageBar(number: Int) {
         Text(
             text = "${number+2}", modifier = Modifier
                 .background(
-                    color = if (number == 2) Color(0xFF9094FB) else Color(0xFFF1F1F1),
+                    color = if (number == 3) Color(0xFF9094FB) else Color(0xFFF1F1F1),
                     shape = CircleShape
                 )
                 .size(25.dp),
             style = TextStyle(
-                color = if (number == 2) Color.White else Color(0xFFD9D9D9),
+                color = if (number == 3) Color.White else Color(0xFFD9D9D9),
                 fontSize = 18.sp,
                 textAlign = TextAlign.Center ,
                 fontWeight = FontWeight(700)
