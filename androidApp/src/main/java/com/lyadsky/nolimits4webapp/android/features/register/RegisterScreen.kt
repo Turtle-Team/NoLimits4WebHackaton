@@ -9,12 +9,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
 import com.lyadsky.nolimits4webapp.android.features.views.bars.StageBar
 import com.lyadsky.nolimits4webapp.android.features.views.buttons.CommonButton
 import com.lyadsky.nolimits4webapp.android.features.views.edit_texts.CommonEditText
+import com.lyadsky.nolimits4webapp.features.register.viewModel.RegisterViewModel
+import com.lyadsky.nolimits4webapp.features.welcome.viewModel.WelcomeViewModel
+import org.koin.androidx.compose.getViewModel
+import org.koin.core.qualifier.named
 
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(
+    viewModelWrapper: ViewModelWrapper<RegisterViewModel> =
+        getViewModel(named("RegisterViewModel"))
+) {
     Column(
         Modifier
             .fillMaxSize()
@@ -34,7 +42,7 @@ fun RegisterScreen() {
 
         Divider(Modifier.padding(top = 140.dp), color = Color.White)
         CommonButton(text = "Дальше") {
-
+            viewModelWrapper.viewModel.onNextClick()
         }
 
     }

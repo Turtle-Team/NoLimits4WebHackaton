@@ -1,7 +1,10 @@
 package com.lyadsky.nolimits4webapp.android.features.welcome
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -17,14 +20,14 @@ import androidx.compose.ui.unit.sp
 import com.lyadsky.nolimits4webapp.android.R
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
 import com.lyadsky.nolimits4webapp.android.features.views.buttons.CommonButton
-import com.lyadsky.nolimits4webapp.features.auth.viewModel.AuthViewModelImpl
+import com.lyadsky.nolimits4webapp.features.welcome.viewModel.WelcomeViewModel
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.qualifier.named
 
 @Composable
 fun WelcomeScreen(
-    viewModelWrapper: ViewModelWrapper<AuthViewModelImpl> =
-        getViewModel(named("AuthViewModel"))
+    viewModelWrapper: ViewModelWrapper<WelcomeViewModel> =
+        getViewModel(named("WelcomeViewModel"))
 ) {
     Column(
         Modifier
