@@ -17,11 +17,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 /**
-* @param textState получать из вью модели
+ * @param textState получать из вью модели
  */
 
 @Composable
-fun CommonEditText(title: String, textState: String = "", onValueChanged: (String) -> Unit) {
+fun CommonEditText(
+    title: String,
+    placeholder: String? = null,
+    isCenterText: Boolean = false,
+    textState: String = "",
+    onValueChanged: (String) -> Unit
+) {
 
     var text by remember { mutableStateOf(textState) }
 
@@ -31,9 +37,11 @@ fun CommonEditText(title: String, textState: String = "", onValueChanged: (Strin
                 fontSize = 24.sp,
                 fontWeight = FontWeight(700),
                 color = Color(0xFF474992),
-                textAlign = TextAlign.Start
+                textAlign = if (isCenterText) TextAlign.Center else TextAlign.Start
             ),
-            modifier = Modifier.fillMaxWidth().padding(bottom = 20.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 20.dp)
         )
         Row(
             modifier = Modifier
@@ -57,10 +65,13 @@ fun CommonEditText(title: String, textState: String = "", onValueChanged: (Strin
                     .fillMaxWidth()
                     .height(60.dp),
                 decorationBox = { innerTextField ->
-                    Box(modifier = Modifier.padding(start = 15.dp),contentAlignment = Alignment.CenterStart){
+                    Box(
+                        modifier = Modifier.padding(start = 15.dp),
+                        contentAlignment = Alignment.CenterStart
+                    ) {
                         if (text.isEmpty())
                             Text(
-                                text = title, style = TextStyle(
+                                text = placeholder ?: title, style = TextStyle(
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight(700),
                                     color = Color(0xFFD9D9D9),

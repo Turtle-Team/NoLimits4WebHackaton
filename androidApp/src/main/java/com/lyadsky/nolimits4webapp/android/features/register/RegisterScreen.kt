@@ -22,8 +22,6 @@ fun RegisterScreen(
     viewModelWrapper: ViewModelWrapper<RegisterViewModel> =
         getViewModel(named("RegisterViewModel"))
 ) {
-    Column(
-fun RegisterScreen() {
     LazyColumn(
         Modifier
             .fillMaxSize(),

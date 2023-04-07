@@ -51,7 +51,7 @@ fun InfoUserScreen() {
                 title = "Как тебя зовут?",
                 placeholder = "Введи свое имя",
                 isCenterText = true
-            )
+            ){}
         }
 
         Column(

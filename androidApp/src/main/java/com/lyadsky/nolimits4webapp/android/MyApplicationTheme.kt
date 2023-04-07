@@ -1,55 +1,45 @@
 package com.lyadsky.nolimits4webapp.android
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Shapes
-import androidx.compose.material.Typography
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+
+val LocalColors = compositionLocalOf<Colors>{ error("colors wasnt provided") }
 
 @Composable
-fun MyApplicationTheme(
+fun AppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colors = if (darkTheme) {
-        darkColors(
-            primary = Color(0xFFBB86FC),
-            primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
-        )
-    } else {
-        lightColors(
-            primary = Color(0xFF6200EE),
-            primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
-        )
-    }
-    val typography = Typography(
-        body1 = TextStyle(
-            fontFamily = FontFamily.Default,
-            fontWeight = FontWeight.Normal,
-            fontSize = 16.sp
-        )
-    )
-    val shapes = Shapes(
-        small = RoundedCornerShape(4.dp),
-        medium = RoundedCornerShape(4.dp),
-        large = RoundedCornerShape(0.dp)
+
+    val dayColors = Colors(
+        color1 = Color(0xFF9094FB),
+        color2 = Color(0xFF66D5FD),
+        color3 = Color(0xFF98D14B),
+        color4 = Color(0xFFFEB242),
+        color5 =Color(0xFFF791A4)
     )
 
-    MaterialTheme(
-        colors = colors,
-        typography = typography,
-        shapes = shapes,
-        content = content
+    //FIXME если будет палитра для тёмной темы заменить цвета
+    val nightColors = Colors(
+        color1 = Color(0xFF9094FB),
+        color2 = Color(0xFF66D5FD),
+        color3 = Color(0xFF98D14B),
+        color4 = Color(0xFFFEB242),
+        color5 =Color(0xFFF791A4)
     )
+
+    CompositionLocalProvider(LocalColors provides if (darkTheme) dayColors else nightColors){
+        content()
+    }
 }
+
+data class Colors(
+    val color1: Color,
+    val color2: Color,
+    val color3: Color,
+    val color4: Color,
+    val color5: Color
+)
