@@ -7,6 +7,7 @@ pluginManagement {
 
     plugins {
         id("com.squareup.sqldelight").version("1.5.5").apply(false)
+        kotlin("plugin.serialization") version "1.7.20" apply false
     }
 }
 

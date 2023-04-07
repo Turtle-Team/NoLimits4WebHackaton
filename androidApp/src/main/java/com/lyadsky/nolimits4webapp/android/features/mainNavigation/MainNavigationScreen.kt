@@ -26,8 +26,8 @@ fun MainNavigationScreen(
     navController: NavHostController = rememberNavController(),
     viewModelWrapper: ViewModelWrapper<MainNavigationViewModel> =
         getViewModel(qualifier = named("MainNavigationViewModel")),
+    startDestination: ScreenRoute
 ) {
-    val startDestination = ScreenRoute.Main.toString()
     val backStackState = navController.currentBackStackEntryAsState()
     val currentRoute = backStackState.value
         ?.destination?.route?.substringBefore("/") ?: startDestination
@@ -40,14 +40,14 @@ fun MainNavigationScreen(
         bottomBar = {
             val isMainScreen = bottomNavigationItems.any { it.route.name == currentRoute }
             if (isMainScreen)
-                BottomBar(ScreenRoute.valueOf(currentRoute)) { route: ScreenRoute ->
+                BottomBar(ScreenRoute.valueOf(currentRoute.toString())) { route: ScreenRoute ->
                     viewModelWrapper.viewModel.onBottomBarButtonClicked(route)
                 }
         }
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = startDestination,
+            startDestination = startDestination.name,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
@@ -63,6 +63,9 @@ fun MainNavigationScreen(
             }
             composable(route = ScreenRoute.Register.name) {
                 RegisterScreen()
+            }
+            composable(route = ScreenRoute.Welcome.name) {
+                WelcomeScreen()
             }
         }
     }

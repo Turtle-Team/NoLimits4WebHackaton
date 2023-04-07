@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("com.squareup.sqldelight")
+    kotlin("plugin.serialization")
 }
 
 kotlin {
@@ -28,6 +29,9 @@ kotlin {
             dependencies {
                 // DI
                 implementation("io.insert-koin:koin-core:3.3.2")
+
+                //ktx
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
 
                 //database
                 implementation("com.squareup.sqldelight:runtime:1.5.4")
