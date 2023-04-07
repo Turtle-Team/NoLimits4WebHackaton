@@ -2,6 +2,8 @@ package com.lyadsky.nolimits4webapp.android.features.welcome
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -29,7 +31,8 @@ fun WelcomeScreen(
     Column(
         Modifier
             .fillMaxSize()
-            .padding(top = 148.dp, bottom = 50.dp),
+            .padding(top = 148.dp, bottom = 50.dp)
+            .verticalScroll(rememberScrollState()),
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Image(

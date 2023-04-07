@@ -1,40 +1,45 @@
 package com.lyadsky.nolimits4webapp.android.features.register
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Divider
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.lyadsky.nolimits4webapp.android.features.views.bars.StageBar
 import com.lyadsky.nolimits4webapp.android.features.views.buttons.CommonButton
 import com.lyadsky.nolimits4webapp.android.features.views.edit_texts.CommonEditText
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun RegisterScreen() {
-    Column(
+    LazyColumn(
         Modifier
-            .fillMaxSize()
-            .padding(top = 50.dp), horizontalAlignment = Alignment.CenterHorizontally
+            .fillMaxSize(),
+        contentPadding = PaddingValues(vertical = 50.dp, horizontal = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(30.dp)
     ) {
+        stickyHeader {
+            StageBar(number = 1)
+        }
+        item {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(30.dp, Alignment.CenterVertically)
+            ) {
+                CommonEditText(title = "Имя пользователя", onValueChanged = {})
 
-        StageBar(number = 1)
-        Divider(Modifier.padding(top = 52.dp), color = Color.White)
+                CommonEditText(title = "Электронная почта", onValueChanged = {})
 
-        CommonEditText(title = "Имя пользователя")
-        Divider(Modifier.padding(top = 30.dp), color = Color.White)
+                CommonEditText(title = "Пароль", onValueChanged = {})
+            }
+        }
+        item {
+            CommonButton(text = "Дальше") {
 
-        CommonEditText(title = "Электронная почта")
-        Divider(Modifier.padding(top = 30.dp), color = Color.White)
-
-        CommonEditText(title = "Пароль")
-
-        Divider(Modifier.padding(top = 140.dp), color = Color.White)
-        CommonButton(text = "Дальше") {
-
+            }
         }
 
     }

@@ -18,8 +18,8 @@ import androidx.compose.ui.unit.sp
 import com.lyadsky.nolimits4webapp.android.R
 
 @Composable
-fun StageBar(number: Int) {
-    Row (horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
+fun StageBar(modifier: Modifier = Modifier,number: Int) {
+    Row (modifier = modifier,horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
         Text(
             text = "$number", modifier = Modifier
                 .background(
