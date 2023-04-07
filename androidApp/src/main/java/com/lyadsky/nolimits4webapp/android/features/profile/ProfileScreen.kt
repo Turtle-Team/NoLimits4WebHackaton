@@ -8,6 +8,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.lyadsky.nolimits4webapp.android.features.profile.layouts.ProfileLayout
 
 @Composable
 fun ProfileScreen() {
@@ -15,6 +16,6 @@ fun ProfileScreen() {
         Modifier
             .fillMaxSize()
             .background(Color.White)) {
-        Text(text = "profile")
+        ProfileLayout()
     }
 }
