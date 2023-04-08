@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,10 +20,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lyadsky.nolimits4webapp.android.R
+import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
 import com.lyadsky.nolimits4webapp.android.font
+import com.lyadsky.nolimits4webapp.features.catalog.viewModel.CatalogViewModel
+import com.lyadsky.nolimits4webapp.features.profile.viewModel.ProfileViewModel
+import com.lyadsky.nolimits4webapp.features.register.viewModel.RegisterViewModel
+import org.koin.androidx.compose.getViewModel
+import org.koin.core.qualifier.named
 
 @Composable
-fun CatalogLayout() {
+fun CatalogLayout(
+
+) {
     Column(Modifier.fillMaxWidth()) {
         Text(
             text = "Выбери занятие!", style = TextStyle(
@@ -52,7 +61,7 @@ fun CatalogLayout() {
             horizontalArrangement = Arrangement.Center
         ) {
             items(items = chapterList) { item ->
-                Column(Modifier.padding(top = 10.dp, bottom = 10.dp ,start = 16.dp, end = 16.dp)) {
+                Column(Modifier.padding(top = 10.dp, bottom = 10.dp, start = 16.dp, end = 16.dp)) {
                     ChapterItem(chapter = item)
                 }
             }
@@ -65,8 +74,12 @@ data class Chapter(
     val title: String
 )
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun ChapterItem(chapter: Chapter) {
+fun ChapterItem(
+    chapter: Chapter, viewModelWrapper: ViewModelWrapper<CatalogViewModel> =
+        getViewModel(named("CatalogViewModel"))
+) {
     Card(
         modifier = Modifier.border(
             width = 2.dp,
@@ -74,7 +87,12 @@ fun ChapterItem(chapter: Chapter) {
             shape = RoundedCornerShape(15.dp)
         ),
         elevation = 3.dp,
-        shape = RoundedCornerShape(15.dp)
+        shape = RoundedCornerShape(15.dp),
+        onClick = {
+            when (chapter.title) {
+                "Алфавит" -> viewModelWrapper.viewModel.onAlphabetClick()
+            }
+        }
     ) {
         Column(
             Modifier.padding(15.dp),

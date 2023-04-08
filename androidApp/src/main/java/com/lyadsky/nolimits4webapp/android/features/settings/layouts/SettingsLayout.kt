@@ -1,5 +1,6 @@
 package com.lyadsky.nolimits4webapp.android.features.settings.layouts
 
+import android.media.MediaPlayer
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -12,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -20,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lyadsky.nolimits4webapp.android.R
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
+import com.lyadsky.nolimits4webapp.android.features.views.bars.CommonTopBar
 import com.lyadsky.nolimits4webapp.android.features.views.edit_texts.CommonEditText
 import com.lyadsky.nolimits4webapp.features.settings.viewModel.SettingsViewModel
 import org.koin.androidx.compose.getViewModel
@@ -31,7 +34,10 @@ fun SettingsLayout(
         getViewModel(named("SettingsViewModel"))
 ) {
     Column(Modifier.fillMaxWidth()) {
-        SettingsTopBar {
+//        SettingsTopBar {
+//            viewModelWrapper.viewModel.onBackClick()
+//        }
+        CommonTopBar(title = "Настройки") {
             viewModelWrapper.viewModel.onBackClick()
         }
 
@@ -49,13 +55,19 @@ fun SettingsLayout(
                 )
 
                 Spacer(modifier = Modifier.padding(top = 54.dp))
-                CommonEditText(title = "Имя пользователя"){}
+                CommonEditText(title = "Имя пользователя", textSize = 16){
+
+                }
 
                 Spacer(modifier = Modifier.padding(top = 30.dp))
-                CommonEditText(title = "Электронная почта"){}
+                CommonEditText(title = "Электронная почта", textSize = 16){
+
+                }
 
                 Spacer(modifier = Modifier.padding(top = 30.dp))
-                CommonEditText(title = "Пароль"){}
+                CommonEditText(title = "Пароль", textSize = 16){
+
+                }
 
                 Column(
                     Modifier
@@ -112,6 +124,8 @@ fun ChangeTheme() {
                 color = Color(0xFF474992)
             )
         )
+        val context = LocalContext.current
+        val mMediaPlayer = MediaPlayer().isPlaying
         Row(Modifier.padding(top = 20.dp), horizontalArrangement = Arrangement.Center) {
             Column(
                 modifier = Modifier
@@ -121,7 +135,10 @@ fun ChangeTheme() {
                         width = 1.dp,
                         shape = RoundedCornerShape(8.dp),
                         color = Color(0xFF474992)
-                    ),
+                    )
+                    .clickable {
+
+                    },
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {

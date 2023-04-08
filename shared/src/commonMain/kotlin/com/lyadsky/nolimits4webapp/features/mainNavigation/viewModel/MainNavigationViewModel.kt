@@ -20,6 +20,7 @@ class MainNavigationViewModelImpl(
             ScreenRoute.Auth -> navigator.navigateToAuth()
             ScreenRoute.Register -> navigator.navigateToRegister()
             ScreenRoute.Catalog -> navigator.navigateToCatalog()
+            ScreenRoute.Alphabet -> navigator.navigateToAlphabet()
             else -> {}
         }
     }
