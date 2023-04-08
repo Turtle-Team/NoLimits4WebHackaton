@@ -28,6 +28,7 @@ fun CommonEditText(
     placeholder: String? = null,
     isCenterText: Boolean = false,
     textState: String = "",
+    textSize: Int? = 24,
     onValueChanged: (String) -> Unit
 ) {
 
@@ -36,7 +37,7 @@ fun CommonEditText(
     Column(modifier) {
         Text(
             text = title, style = TextStyle(
-                fontSize = 24.sp,
+                fontSize = textSize!!.sp,
                 fontFamily = font,
                 fontWeight = FontWeight(700),
                 color = Color(0xFF474992),
