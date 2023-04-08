@@ -16,8 +16,8 @@ class NavigatorImpl(
         navController?.popBackStack()
     }
 
-    override fun navigateToMain() {
-        navigateToNavBarDestination(ScreenRoute.Main)
+    override fun navigateToMain(clearBackStack: Boolean) {
+        navigateToNavBarDestination(ScreenRoute.Main, clearBackStack)
     }
 
     override fun navigateToWelcome() {
@@ -41,11 +41,14 @@ class NavigatorImpl(
     }
 
 
-    private fun navigateToNavBarDestination(root: ScreenRoute) {
+    private fun navigateToNavBarDestination(root: ScreenRoute, clearBackStack: Boolean = false) {
         navController?.navigate(root.name) {
-            popUpTo(navController!!.graph.findStartDestination().id) {
-                saveState = true
-            }
+            if (clearBackStack)
+                popUpTo(0)
+            else
+                popUpTo(navController!!.graph.findStartDestination().id) {
+                    saveState = true
+                }
             launchSingleTop = true
             restoreState = true
         }

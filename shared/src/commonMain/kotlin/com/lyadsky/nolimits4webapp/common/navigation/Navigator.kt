@@ -11,7 +11,7 @@ enum class ScreenRoute {
 
 interface Navigator {
     fun navigateBack()
-    fun navigateToMain()
+    fun navigateToMain(clearBackStack: Boolean = false)
     fun navigateToWelcome()
     fun navigateToAuth()
     fun navigateToRegister()

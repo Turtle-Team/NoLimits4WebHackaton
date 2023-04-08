@@ -1,6 +1,7 @@
 package com.lyadsky.nolimits4webapp.features.register.viewModel
 
 import com.lyadsky.nolimits4webapp.common.navigation.Navigator
+import com.lyadsky.nolimits4webapp.common.navigation.ScreenRoute
 import com.lyadsky.nolimits4webapp.common.viewModel.KmpViewModel
 import com.lyadsky.nolimits4webapp.common.viewModel.KmpViewModelImpl
 import com.lyadsky.nolimits4webapp.common.viewModel.SubScreenViewModel
@@ -40,7 +41,7 @@ class RegisterViewModelImpl(
         if (_state.value.stage < 3)
             _state.update { it.copy(stage = _state.value.stage + 1) }
         else {
-            navigator.navigateToMain()
+            navigator.navigateToMain(true)
             //TODO навигация на главную или куда то ещё и сохранение всех данных о пользователе
         }
     }
