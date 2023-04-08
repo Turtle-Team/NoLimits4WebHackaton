@@ -3,9 +3,9 @@ package com.lyadsky.nolimits4webapp.android.features.tasks.shapes.layouts
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.sp
 import com.lyadsky.nolimits4webapp.android.LocalColors
 import com.lyadsky.nolimits4webapp.android.R
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
-import com.lyadsky.nolimits4webapp.android.features.tasks.logic.layouts.PutDownCardItem
 import com.lyadsky.nolimits4webapp.features.tasks.viewModel.TaskViewModel
 
 @Composable
@@ -60,13 +59,17 @@ fun AppleFormScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
                 .padding(top = 76.dp)
         ) {
             items(items = figuresList) { item ->
-                AppleFormGridItems(imageId = item, viewModelWrapper = viewModelWrapper)
+                Column(Modifier.padding(horizontal = 10.dp )) {
+                    AppleFormGridItems(imageId = item, viewModelWrapper = viewModelWrapper)
+                }
             }
         }
-        Icon(
-            painter = painterResource(id = R.drawable.ic_mic), contentDescription = "",
-            modifier = Modifier.padding(top = 40.dp), tint = Color(0xFF474992)
-        )
+        Row(horizontalArrangement = Arrangement.Center) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_sound), contentDescription = "",
+                modifier = Modifier.padding(bottom = 40.dp)
+            )
+        }
     }
 }
 
@@ -74,11 +77,35 @@ fun AppleFormScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
 @Composable
 fun AppleFormGridItems(imageId: Int, viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
     var color by remember { mutableStateOf(Color.White) }
-    Image(painter = painterResource(id = imageId), contentDescription = "",
-        Modifier.clickable {
-            if (imageId == R.drawable.ic_circle) viewModelWrapper.viewModel.onNextClick()
-            else color = Color.Red
-        }
-            .background(color)
-    )
+    Column(
+        modifier = Modifier
+            .size(
+                156.dp,
+                178.dp
+            )
+            .shadow(if (color == Color.Red) 0.dp else 4.dp, RoundedCornerShape(15.dp))
+            .background(Color.White, RoundedCornerShape(15.dp))
+            .border(
+                width = if (color == Color.Red) 2.dp else 0.dp,
+                color = color,
+                shape = RoundedCornerShape(15.dp)
+            )
+            .clickable {
+                if (imageId == R.drawable.ic_circle) {
+                    color = Color.Green
+                    viewModelWrapper.viewModel.onNextClick()
+                } else {
+                    color = Color.Red
+                }
+            },
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Image(
+            modifier = Modifier.size(126.dp),
+            painter = painterResource(id = imageId),
+            contentDescription = "",
+            alignment = Alignment.Center
+        )
+    }
 }

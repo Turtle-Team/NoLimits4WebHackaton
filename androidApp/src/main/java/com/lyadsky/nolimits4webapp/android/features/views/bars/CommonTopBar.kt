@@ -9,10 +9,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,14 +26,17 @@ import com.lyadsky.nolimits4webapp.android.font
 @Composable
 fun CommonTopBar(title: String, onBackClick: () -> Unit) {
     Row(modifier = Modifier.padding(start = 25.dp, top = 50.dp, bottom = 10.dp)) {
-        Icon(
-            painter = painterResource(id = R.drawable.ic_back), contentDescription = "",
-            tint = Color(0xFF474992),
+        IconButton(
+            onClick = { onBackClick() },
             modifier = Modifier
                 .width(26.dp)
                 .height(22.dp)
-                .clickable { onBackClick() }
-        )
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_back), contentDescription = "",
+                tint = Color(0xFF474992),
+            )
+        }
         Text(
             text = title,
             modifier = Modifier.padding(start = 20.dp),

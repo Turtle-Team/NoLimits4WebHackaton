@@ -8,11 +8,14 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -25,6 +28,7 @@ import com.lyadsky.nolimits4webapp.android.R
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
 import com.lyadsky.nolimits4webapp.android.features.views.bars.CommonTopBar
 import com.lyadsky.nolimits4webapp.android.features.views.edit_texts.CommonEditText
+import com.lyadsky.nolimits4webapp.android.font
 import com.lyadsky.nolimits4webapp.common.user_data.UserDataManager
 import com.lyadsky.nolimits4webapp.features.settings.viewModel.SettingsViewModel
 import org.koin.androidx.compose.get
@@ -37,9 +41,6 @@ fun SettingsLayout(
         getViewModel(named("SettingsViewModel")),
 ) {
     Column(Modifier.fillMaxWidth()) {
-//        SettingsTopBar {
-//            viewModelWrapper.viewModel.onBackClick()
-//        }
         CommonTopBar(title = "Настройки") {
             viewModelWrapper.viewModel.onBackClick()
         }
@@ -59,76 +60,26 @@ fun SettingsLayout(
                         .padding(horizontal = 100.dp),
                     tint = Color.White
                 )
-
-                Spacer(modifier = Modifier.padding(top = 54.dp))
-                CommonEditText(title = "Имя пользователя", textSize = 16) {
-
-                }
-
-                Spacer(modifier = Modifier.padding(top = 30.dp))
-                CommonEditText(title = "Электронная почта", textSize = 16) {
-
-                }
-
-                Spacer(modifier = Modifier.padding(top = 30.dp))
-                CommonEditText(title = "Пароль", textSize = 16) {
-
-                }
-
-                Column(
-                    Modifier
-                        .padding(top = 20.dp, bottom = 40.dp)
-                        .fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    ChangeTheme()
-                    Text(
-                        text = "Выход из аккаунта", style = TextStyle(
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight(700),
-                            color = Color(0xFFB4B4B4),
-                            textAlign = TextAlign.Center),
-                        modifier = Modifier
-                            .padding(top = 30.dp)
-                            .clickable(MutableInteractionSource(), indication = null) {
-                                viewModelWrapper.viewModel.onExitAccount()
-                            }
-                    )
-                }
+                Text(
+                    text = "Егор", modifier = Modifier.padding(top = 7.dp),
+                    color = Color(0xFFC7C7C7),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight(700)
+                )
+            }
+            item {
+                ChangeTheme()
             }
         }
     }
 }
 
 @Composable
-fun SettingsTopBar(backButton: () -> Unit) {
-    Row(modifier = Modifier.padding(start = 25.dp, top = 50.dp)) {
-        Icon(
-            painter = painterResource(id = R.drawable.ic_back), contentDescription = "",
-            tint = Color(0xFF474992),
-            modifier = Modifier
-                .width(26.dp)
-                .height(22.dp)
-                .clickable { backButton() }
-        )
-        Text(
-            text = "Настройки",
-            modifier = Modifier.padding(start = 20.dp, bottom = 20.dp),
-            style = TextStyle(
-                fontSize = 20.sp,
-                fontWeight = FontWeight(700),
-                color = Color(0xFF474992)
-            )
-        )
-    }
-}
-
-@Composable
-fun ChangeTheme() {
+fun ChangeTheme(lightTheme: Boolean = true) {
     Column(
         Modifier
             .fillMaxWidth()
-            .padding(start = 32.dp)
+            .padding(start = 32.dp, top = 30.dp)
     ) {
         Text(
             text = "Выберите тему приложения", style = TextStyle(
@@ -137,51 +88,58 @@ fun ChangeTheme() {
                 color = Color(0xFF474992)
             )
         )
-        val context = LocalContext.current
-        val mMediaPlayer = MediaPlayer().isPlaying
-        Row(Modifier.padding(top = 20.dp), horizontalArrangement = Arrangement.Center) {
-            Column(
-                modifier = Modifier
-                    .width(156.dp)
-                    .height(64.dp)
-                    .border(
-                        width = 1.dp,
-                        shape = RoundedCornerShape(8.dp),
-                        color = Color(0xFF474992)
-                    )
-                    .clickable {
 
-                    },
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(top = 20.dp)
+        ) {
+            Button(
+                onClick = { /*TODO*/ },
+                modifier = Modifier
+                    .width(155.dp)
+                    .height(65.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .border(
+                        width = 2.dp,
+                        color = if (lightTheme) Color(0xFFDCDCDC) else Color(0xFF474992),
+                        shape = RoundedCornerShape(8.dp)
+                    ),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.White,
+                )
             ) {
                 Text(
-                    text = "Темная", modifier = Modifier.padding(start = 16.dp), style = TextStyle(
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight(700),
-                        color = Color(0xFF474992)
-                    )
+                    text = "Темная",
+                    color = if (lightTheme) Color(0xFFDCDCDC) else Color(0xFF474992),
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight(600),
+                    fontFamily = font
                 )
             }
 
-            Column(
+            Button(
+                onClick = { /*TODO*/ },
                 modifier = Modifier
-                    .width(156.dp)
-                    .height(64.dp)
+                    .width(155.dp)
+                    .height(65.dp)
+                    .padding(start = 16.dp)
+                    .clip(RoundedCornerShape(8.dp))
                     .border(
-                        width = 1.dp,
-                        shape = RoundedCornerShape(8.dp),
-                        color = Color(0xFF474992)
+                        width = 2.dp,
+                        color = if (!lightTheme) Color(0xFFDCDCDC) else Color(0xFF474992),
+                        shape = RoundedCornerShape(8.dp)
                     ),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.White,
+                )
             ) {
                 Text(
-                    text = "Светлая", modifier = Modifier.padding(start = 16.dp), style = TextStyle(
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight(700),
-                        color = Color(0xFF474992)
-                    )
+                    text = "Темная",
+                    color = if (!lightTheme) Color(0xFFDCDCDC) else Color(0xFF474992),
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight(600),
+                    fontFamily = font
                 )
             }
         }

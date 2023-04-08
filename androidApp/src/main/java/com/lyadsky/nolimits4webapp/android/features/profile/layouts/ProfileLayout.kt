@@ -11,6 +11,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -46,22 +47,26 @@ fun ProfileLayout(
                 .padding(start = 25.dp, end = 25.dp, top = 50.dp)
                 .fillMaxWidth()
         ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_settings), contentDescription = "",
-                modifier = Modifier
-                    .size(25.dp)
-                    .clickable { viewModelWrapper.viewModel.onSettingsClick() },
-                tint = Color(0xFF474992)
-            )
 
-            Icon(
-                painter = painterResource(id = R.drawable.ic_circle), contentDescription = "",
+            IconButton(
+                onClick = { viewModelWrapper.viewModel.onSettingsClick() },
+                modifier = Modifier
+                    .size(25.dp),
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_settings), contentDescription = "",
+                    tint = Color(0xFF474992)
+                )
+            }
+            IconButton(
+                onClick = { /*TODO*/ },
                 modifier = Modifier
                     .size(75.dp)
                     .border(width = 2.dp, color = Color(0xFFC7C7C7), shape = CircleShape)
                     .padding(horizontal = 100.dp),
-                tint = Color.White
-            )
+            ) {
+                Icon(painter = painterResource(id = R.drawable.ic_circle), contentDescription = "", tint = Color.White)
+            }
 
 //            Image(
 //                painter = painterResource(id = R.drawable.ic_avatarka), contentDescription = "",
