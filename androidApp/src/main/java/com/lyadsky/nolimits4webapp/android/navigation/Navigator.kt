@@ -20,10 +20,6 @@ class NavigatorImpl(
         navigateToNavBarDestination(ScreenRoute.Main, clearBackStack)
     }
 
-    override fun navigateToWelcome(clearBackStack: Boolean) {
-        navigateToNavBarDestination(ScreenRoute.Welcome, clearBackStack)
-    }
-
     override fun navigateToAuth() {
         navigateToNavBarDestination(ScreenRoute.Auth)
     }
@@ -63,6 +59,24 @@ class NavigatorImpl(
     override fun navigateToHelicGame() {
         navigateToNavBarDestination(ScreenRoute.Helicopter)
     }
+
+    override fun register() {
+        navController?.navigate(ScreenRoute.Main.name){
+            popUpTo(0){
+                saveState = false
+                this.inclusive = true
+            }
+        }
+
+    }
+
+    override fun signOut() {
+        navController?.navigate(ScreenRoute.Register.name){
+            popUpTo(0){
+                saveState = false
+                this.inclusive = true
+            }
+        }    }
 
     private fun navigateToNavBarDestination(root: ScreenRoute, clearBackStack: Boolean = false) {
         navController?.navigate(root.name) {

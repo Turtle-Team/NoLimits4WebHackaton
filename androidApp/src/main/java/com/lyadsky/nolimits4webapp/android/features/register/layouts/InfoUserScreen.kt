@@ -44,9 +44,7 @@ fun InfoUserScreen(
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         item {
-            Image(
-                painter = painterResource(id = R.drawable.ic_penguin), contentDescription = "",
-            )
+            GenderSelector(selectedGender = state.value.isMale, onChanged = {viewModelWrapper.viewModel.onGenderChanged(it) })
         }
 
         item {
@@ -126,6 +124,77 @@ fun AgeSelector(age: Int, onAgeChanged: (Int) -> Unit) {
                     fontWeight = FontWeight(700),
                     style = style,
                     fontFamily = font
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun GenderSelector(selectedGender: Boolean?, onChanged: (Boolean) -> Unit) {
+    Column(
+        Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(15.dp)
+    ) {
+        Text(
+            text = "Выбери свой пол",
+            fontWeight = FontWeight(700),
+            fontSize = 24.sp,
+            color = LocalColors.current.color6
+        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally)
+        ) {
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .size(80.dp, 94.dp)
+                    .border(
+                        width = 2.dp,
+                        shape = RoundedCornerShape(10.dp),
+                        color = when (selectedGender) {
+                            false -> {
+                                LocalColors.current.color1
+                            }
+                            else -> {
+                                Color.Transparent
+                            }
+                        }
+                    )
+                    .clickable(MutableInteractionSource(), indication = null) {
+                        onChanged(false)
+                    }
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.girl),
+                    contentDescription = ""
+                )
+            }
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .size(80.dp, 94.dp)
+                    .border(
+                        width = 2.dp,
+                        shape = RoundedCornerShape(10.dp),
+                        color = when (selectedGender) {
+                            true -> {
+                                LocalColors.current.color1
+                            }
+                            else -> {
+                                Color.Transparent
+                            }
+                        }
+                    )
+                    .clickable(MutableInteractionSource(), indication = null) {
+                        onChanged(true)
+                    }
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.boy),
+                    contentDescription = ""
                 )
             }
         }

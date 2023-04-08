@@ -64,6 +64,6 @@ class MainActivity : ComponentActivity() {
         return if (data.isNotEmpty())
             ScreenRoute.Main
         else
-            ScreenRoute.Welcome
+            ScreenRoute.Register
     }
 }

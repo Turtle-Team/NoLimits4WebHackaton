@@ -3,7 +3,6 @@ package com.lyadsky.nolimits4webapp.common.navigation
 enum class ScreenRoute {
     Main,
     Profile,
-    Welcome,
     Auth,
     Register,
     InfoUser,
@@ -12,14 +11,13 @@ enum class ScreenRoute {
     Alphabet,
     Logic,
     Shapes,
-    Mathematic
+    Mathematic,
     Helicopter
 }
 
 interface Navigator {
     fun navigateBack()
     fun navigateToMain(clearBackStack: Boolean = false)
-    fun navigateToWelcome(clearBackStack: Boolean = false)
     fun navigateToAuth()
     fun navigateToRegister()
     fun navigateToProfile()
@@ -30,4 +28,7 @@ interface Navigator {
     fun navigateToShapes()
     fun navigateToMathematic()
     fun navigateToHelicGame()
+
+    fun register()
+    fun signOut()
 }

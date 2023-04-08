@@ -6,18 +6,18 @@ import java.util.*
 
 class TextToSpeechWrapper(context: Context) {
 
-    private val textToSpeech: TextToSpeech = TextToSpeech(context) { status ->
-        if (status == TextToSpeech.SUCCESS) {
-            textToSpeech.language = Locale.getDefault()
-        }
-    }
-
-    fun speak(text: String) {
-        textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
-    }
-
-    fun shutdown() {
-        textToSpeech.stop()
-        textToSpeech.shutdown()
-    }
+//    private val textToSpeech: TextToSpeech = TextToSpeech(context) { status ->
+//        if (status == TextToSpeech.SUCCESS) {
+//            textToSpeech.language = Locale.getDefault()
+//        }
+//    }
+//
+//    fun speak(text: String) {
+//        textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
+//    }
+//
+//    fun shutdown() {
+//        textToSpeech.stop()
+//        textToSpeech.shutdown()
+//    }
 }

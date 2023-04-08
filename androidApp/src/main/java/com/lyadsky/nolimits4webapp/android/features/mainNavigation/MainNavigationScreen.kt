@@ -86,9 +86,6 @@ fun MainNavigationScreen(
             composable(route = ScreenRoute.Register.name) {
                 RegisterScreens()
             }
-            composable(route = ScreenRoute.Welcome.name) {
-                WelcomeScreen()
-            }
             composable(route = ScreenRoute.Catalog.name) {
                 CatalogScreen()
             }

@@ -1,7 +1,6 @@
 package com.lyadsky.nolimits4webapp.features.register.viewModel
 
 import com.lyadsky.nolimits4webapp.common.navigation.Navigator
-import com.lyadsky.nolimits4webapp.common.navigation.ScreenRoute
 import com.lyadsky.nolimits4webapp.common.user_data.UserDataManager
 import com.lyadsky.nolimits4webapp.common.viewModel.KmpViewModel
 import com.lyadsky.nolimits4webapp.common.viewModel.KmpViewModelImpl
@@ -20,6 +19,8 @@ interface RegisterViewModel : KmpViewModel, SubScreenViewModel {
     fun onNextClick()
 
     fun onBackAction()
+
+    fun onGenderChanged(isMale: Boolean)
 
     fun onAgeChanged(age: Int)
 
@@ -40,10 +41,12 @@ class RegisterViewModelImpl(
     override val state: StateFlow<RegisterState> = _state.asStateFlow()
 
     override fun onNextClick() {
-        if (_state.value.stage < 3)
+        if (_state.value.stage < 3) {
             _state.update { it.copy(stage = _state.value.stage + 1) }
+
+        }
         else {
-            navigator.navigateToMain(true)
+            navigator.register()
         }
     }
 
@@ -52,6 +55,10 @@ class RegisterViewModelImpl(
             _state.update { it.copy(stage = _state.value.stage - 1) }
         else
             navigator.navigateBack()
+    }
+
+    override fun onGenderChanged(isMale: Boolean) {
+        _state.update { it.copy(isMale = isMale) }
     }
 
     override fun onAgeChanged(age: Int) {
