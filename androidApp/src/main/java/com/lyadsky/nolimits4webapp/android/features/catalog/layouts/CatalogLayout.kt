@@ -94,6 +94,7 @@ fun ChapterItem(
                 "Алфавит" -> viewModelWrapper.viewModel.onAlphabetClick()
                 "Логика" -> viewModelWrapper.viewModel.onLogicClick()
                 "Формы" -> viewModelWrapper.viewModel.onShapeClick()
+                "Математика" -> viewModelWrapper.viewModel.onMathematicClick()
             }
         }
     ) {

@@ -20,6 +20,7 @@ import com.lyadsky.nolimits4webapp.android.features.register.RegisterScreens
 import com.lyadsky.nolimits4webapp.android.features.settings.SettingsScreen
 import com.lyadsky.nolimits4webapp.android.features.tasks.alphabet.AlphabetScreen
 import com.lyadsky.nolimits4webapp.android.features.tasks.logic.LogicScreen
+import com.lyadsky.nolimits4webapp.android.features.tasks.mathematic.MathematicScreen
 import com.lyadsky.nolimits4webapp.android.features.tasks.shapes.ShapesScreen
 import com.lyadsky.nolimits4webapp.android.features.welcome.WelcomeScreen
 import com.lyadsky.nolimits4webapp.common.navigation.ScreenRoute
@@ -87,6 +88,9 @@ fun MainNavigationScreen(
             }
             composable(route = ScreenRoute.Shapes.name) {
                 ShapesScreen()
+            }
+            composable(route = ScreenRoute.Mathematic.name) {
+                MathematicScreen()
             }
         }
     }
