@@ -42,7 +42,8 @@ fun SelectSuperfluousScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
             text = "Выбери лишнее?",
             fontSize = 24.sp,
             fontWeight = FontWeight(700),
-            color = LocalColors.current.color6
+            color = LocalColors.current.color6,
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp)
         )
         val figuresList = listOf(
             R.drawable.ic_circle,
@@ -63,12 +64,12 @@ fun SelectSuperfluousScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
             items(items = figuresList) { item ->
                 SelectSuperfluousGridItems(item, viewModelWrapper)
             }
-            item {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_mic), contentDescription = "",
-                    modifier = Modifier.padding(top = 70.dp), tint = Color(0xFF474992)
-                )
-            }
+        }
+        Row(horizontalArrangement = Arrangement.Center) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_sound), contentDescription = "",
+                modifier = Modifier.padding(bottom = 70.dp)
+            )
         }
     }
 }
