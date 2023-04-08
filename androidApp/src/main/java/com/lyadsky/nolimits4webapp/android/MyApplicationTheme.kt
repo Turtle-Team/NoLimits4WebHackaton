@@ -1,12 +1,18 @@
 package com.lyadsky.nolimits4webapp.android
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.LocalTextStyle
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 
-val LocalColors = compositionLocalOf<Colors>{ error("colors wasnt provided") }
+val LocalColors = compositionLocalOf<Colors> { error("colors wasnt provided") }
+
+val font = FontFamily(Font(R.font.appfont))
 
 @Composable
 fun AppTheme(
@@ -20,7 +26,7 @@ fun AppTheme(
         color2 = Color(0xFF66D5FD),
         color3 = Color(0xFF98D14B),
         color4 = Color(0xFFFEB242),
-        color5 =Color(0xFFF791A4),
+        color5 = Color(0xFFF791A4),
         color6 = Color(0xFF474992)
     )
 
@@ -31,11 +37,14 @@ fun AppTheme(
         color2 = Color(0xFF66D5FD),
         color3 = Color(0xFF98D14B),
         color4 = Color(0xFFFEB242),
-        color5 =Color(0xFFF791A4),
+        color5 = Color(0xFFF791A4),
         color6 = Color(0xFF474992)
     )
 
-    CompositionLocalProvider(LocalColors provides if (darkTheme) dayColors else nightColors){
+    CompositionLocalProvider(
+        LocalTextStyle provides TextStyle(fontFamily = font),
+        LocalColors provides if (darkTheme) dayColors else nightColors
+    ) {
         content()
     }
 }

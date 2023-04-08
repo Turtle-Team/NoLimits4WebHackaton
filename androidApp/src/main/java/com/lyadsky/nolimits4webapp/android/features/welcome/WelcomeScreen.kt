@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.sp
 import com.lyadsky.nolimits4webapp.android.R
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
 import com.lyadsky.nolimits4webapp.android.features.views.buttons.CommonButton
+import com.lyadsky.nolimits4webapp.android.font
 import com.lyadsky.nolimits4webapp.features.welcome.viewModel.WelcomeViewModel
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.qualifier.named
@@ -45,6 +46,7 @@ fun WelcomeScreen(
                         .padding(top = 34.dp)
                         .fillMaxWidth(),
                     style = TextStyle(
+                        fontFamily = font,
                         color = Color(0xFF494949),
                         fontWeight = FontWeight(700),
                         fontSize = 24.sp,

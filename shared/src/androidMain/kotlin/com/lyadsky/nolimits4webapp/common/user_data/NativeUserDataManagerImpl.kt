@@ -12,7 +12,7 @@ actual class NativeUserDataManagerImpl(private val context: Context) : KoinCompo
         private const val PREFS_NAME = "USERDATAPREFS"
         private const val USER_DATA = "USERDATA"
 
-        private const val def_val = "abc" //TODO поменять на "" когда будет нормальная авторизация
+        private const val def_val = "" //TODO поменять на "" когда будет нормальная авторизация
     }
 
     private val json: Json by inject()

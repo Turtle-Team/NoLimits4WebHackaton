@@ -15,6 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.lyadsky.nolimits4webapp.android.font
 
 /**
  * @param textState получать из вью модели
@@ -36,6 +37,7 @@ fun CommonEditText(
         Text(
             text = title, style = TextStyle(
                 fontSize = 24.sp,
+                fontFamily = font,
                 fontWeight = FontWeight(700),
                 color = Color(0xFF474992),
                 textAlign = if (isCenterText) TextAlign.Center else TextAlign.Start
@@ -55,6 +57,7 @@ fun CommonEditText(
                     onValueChanged(newText)
                 },
                 textStyle = TextStyle(
+                    fontFamily = font,
                     fontSize = 24.sp,
                     fontWeight = FontWeight(700),
                     color = Color(0xFF9094FB),

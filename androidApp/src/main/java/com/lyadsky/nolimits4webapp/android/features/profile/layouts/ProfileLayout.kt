@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lyadsky.nolimits4webapp.android.R
+import com.lyadsky.nolimits4webapp.android.font
 
 @Composable
 fun ProfileLayout() {
@@ -75,6 +76,7 @@ fun ProfileLayout() {
         ) {
             Text(
                 text = "Егор", style = TextStyle(
+                    fontFamily = font,
                     fontSize = 16.sp,
                     fontWeight = FontWeight(700),
                     color = Color(0xFF474992)
@@ -82,6 +84,7 @@ fun ProfileLayout() {
             )
             Text(
                 text = "1 уровень", style = TextStyle(
+                    fontFamily = font,
                     fontSize = 16.sp,
                     fontWeight = FontWeight(700),
                     color = Color(0xFF474992)
@@ -205,6 +208,7 @@ fun FinishedItem(title: String, description: String, progress: Int, isFinished: 
                     Text(
                         text = title,
                         style = TextStyle(
+                            fontFamily = font,
                             fontSize = 20.sp,
                             fontWeight = FontWeight(700),
                             color = Color(0xFF474992)
@@ -212,6 +216,7 @@ fun FinishedItem(title: String, description: String, progress: Int, isFinished: 
                     )
                     Text(
                         text = "$progress%", style = TextStyle(
+                            fontFamily = font,
                             fontSize = 20.sp,
                             fontWeight = FontWeight(700),
                             color = Color(0xFF474992)
@@ -220,6 +225,7 @@ fun FinishedItem(title: String, description: String, progress: Int, isFinished: 
                 }
                 Text(
                     text = description, style = TextStyle(
+                        fontFamily = font,
                         fontSize = 14.sp,
                         fontWeight = FontWeight(700),
                         color = Color(0xFFD9D9D9)

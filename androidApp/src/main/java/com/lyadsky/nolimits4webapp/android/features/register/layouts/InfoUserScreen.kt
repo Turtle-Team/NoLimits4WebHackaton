@@ -24,6 +24,7 @@ import com.lyadsky.nolimits4webapp.android.R
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
 import com.lyadsky.nolimits4webapp.android.features.views.buttons.CommonButton
 import com.lyadsky.nolimits4webapp.android.features.views.edit_texts.CommonEditText
+import com.lyadsky.nolimits4webapp.android.font
 import com.lyadsky.nolimits4webapp.features.register.viewModel.RegisterViewModel
 
 
@@ -66,6 +67,7 @@ fun InfoUserScreen(
                 Text(
                     text = "Сколько тебе лет?",
                     style = TextStyle(
+                        fontFamily = font,
                         fontSize = 24.sp,
                         fontWeight = FontWeight(700),
                         color = Color(0xFF474992)
@@ -122,7 +124,8 @@ fun AgeSelector(age: Int, onAgeChanged: (Int) -> Unit) {
                 Text(
                     text = it.toString(),
                     fontWeight = FontWeight(700),
-                    style = style
+                    style = style,
+                    fontFamily = font
                 )
             }
         }

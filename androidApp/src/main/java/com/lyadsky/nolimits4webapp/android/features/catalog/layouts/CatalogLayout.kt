@@ -19,12 +19,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lyadsky.nolimits4webapp.android.R
+import com.lyadsky.nolimits4webapp.android.font
 
 @Composable
 fun CatalogLayout() {
     Column(Modifier.fillMaxWidth()) {
         Text(
             text = "Выбери занятие!", style = TextStyle(
+                fontFamily = font,
                 fontSize = 24.sp,
                 fontWeight = FontWeight(700),
                 color = Color(0xFF474992)
@@ -86,6 +88,7 @@ fun ChapterItem(chapter: Chapter) {
             )
             Text(
                 text = chapter.title, style = TextStyle(
+                    fontFamily = font,
                     fontSize = 20.sp,
                     fontWeight = FontWeight(700),
                     color = Color(0xFF474992)
