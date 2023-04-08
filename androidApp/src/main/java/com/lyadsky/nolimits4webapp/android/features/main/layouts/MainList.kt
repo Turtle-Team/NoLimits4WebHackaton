@@ -135,7 +135,8 @@ fun MainList() {
                     .padding(top = 15.dp)
                     .height(138.dp)
                     .fillMaxWidth()
-                    .background(Color(0x4A66DFE7), RoundedCornerShape(15.dp)),
+                    .shadow(4.dp, RoundedCornerShape(15.dp))
+                    .background(Color(0xFFD2F5F7), RoundedCornerShape(15.dp)),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -185,7 +186,8 @@ fun MainList() {
                     .padding(top = 15.dp)
                     .height(138.dp)
                     .fillMaxWidth()
-                    .background(Color(0x4AFAE1A4), RoundedCornerShape(15.dp)),
+                    .shadow(4.dp, RoundedCornerShape(15.dp))
+                    .background(Color(0xFFFDF5E4), RoundedCornerShape(15.dp)),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
