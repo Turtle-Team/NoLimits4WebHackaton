@@ -36,10 +36,6 @@ class NavigatorImpl(
         navigateToNavBarDestination(ScreenRoute.Profile)
     }
 
-    override fun navigateToInfoUser() {
-        navigateToNavBarDestination(ScreenRoute.InfoUser)
-    }
-
     override fun navigateToCatalog() {
         navigateToNavBarDestination(ScreenRoute.Catalog)
     }

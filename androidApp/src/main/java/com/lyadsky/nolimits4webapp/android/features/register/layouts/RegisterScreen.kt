@@ -1,27 +1,24 @@
 package com.lyadsky.nolimits4webapp.android.features.register
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
-import com.lyadsky.nolimits4webapp.android.features.views.bars.StageBar
 import com.lyadsky.nolimits4webapp.android.features.views.buttons.CommonButton
 import com.lyadsky.nolimits4webapp.android.features.views.edit_texts.CommonEditText
 import com.lyadsky.nolimits4webapp.features.register.viewModel.RegisterViewModel
-import com.lyadsky.nolimits4webapp.features.welcome.viewModel.WelcomeViewModel
-import org.koin.androidx.compose.getViewModel
-import org.koin.core.qualifier.named
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun RegisterScreen(
-    viewModelWrapper: ViewModelWrapper<RegisterViewModel> =
-        getViewModel(named("RegisterViewModel"))
+    viewModelWrapper: ViewModelWrapper<RegisterViewModel>
 ) {
+
+    val state = viewModelWrapper.viewModel.state.collectAsState()
+
     LazyColumn(
         Modifier
             .fillMaxSize(),
@@ -29,19 +26,28 @@ fun RegisterScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(30.dp)
     ) {
-        stickyHeader {
-            StageBar(number = 1)
-        }
         item {
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(30.dp, Alignment.CenterVertically)
             ) {
-                CommonEditText(title = "Имя пользователя", onValueChanged = {})
+                CommonEditText(
+                    title = "Имя пользователя",
+                    onValueChanged = {viewModelWrapper.viewModel.onNameChanged(it)},
+                    textState = state.value.name
+                )
 
-                CommonEditText(title = "Электронная почта", onValueChanged = {})
+                CommonEditText(
+                    title = "Электронная почта",
+                    onValueChanged = {viewModelWrapper.viewModel.onEmailChanged(it)},
+                    textState = state.value.email
+                )
 
-                CommonEditText(title = "Пароль", onValueChanged = {})
+                CommonEditText(
+                    title = "Пароль",
+                    onValueChanged = {viewModelWrapper.viewModel.onPasswordChanged(it)},
+                    textState = state.value.password
+                )
             }
         }
         item {

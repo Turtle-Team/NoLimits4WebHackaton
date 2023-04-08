@@ -18,6 +18,7 @@ import com.lyadsky.nolimits4webapp.android.features.infoUser.InfoUserScreen
 import com.lyadsky.nolimits4webapp.android.features.welcome.WelcomeScreen
 import com.lyadsky.nolimits4webapp.android.features.main.MainScreen
 import com.lyadsky.nolimits4webapp.android.features.register.RegisterScreen
+import com.lyadsky.nolimits4webapp.android.features.register.RegisterScreens
 import com.lyadsky.nolimits4webapp.common.navigation.ScreenRoute
 import com.lyadsky.nolimits4webapp.features.mainNavigation.viewModel.MainNavigationViewModel
 import org.koin.androidx.compose.getViewModel
@@ -64,10 +65,7 @@ fun MainNavigationScreen(
                 AuthScreen()
             }
             composable(route = ScreenRoute.Register.name) {
-                RegisterScreen()
-            }
-            composable(route = ScreenRoute.InfoUser.name) {
-                InfoUserScreen()
+                RegisterScreens()
             }
             composable(route = ScreenRoute.Welcome.name) {
                 WelcomeScreen()

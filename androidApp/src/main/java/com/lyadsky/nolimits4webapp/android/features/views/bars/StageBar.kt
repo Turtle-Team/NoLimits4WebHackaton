@@ -42,7 +42,7 @@ fun StageBar(modifier: Modifier = Modifier,number: Int) {
         )
 
         Text(
-            text = "${number+1}", modifier = Modifier
+            text = "$number", modifier = Modifier
                 .background(
                     color = if (number == 2) Color(0xFF9094FB) else Color(0xFFF1F1F1),
                     shape = CircleShape
@@ -63,7 +63,7 @@ fun StageBar(modifier: Modifier = Modifier,number: Int) {
         )
 
         Text(
-            text = "${number+2}", modifier = Modifier
+            text = "$number", modifier = Modifier
                 .background(
                     color = if (number == 3) Color(0xFF9094FB) else Color(0xFFF1F1F1),
                     shape = CircleShape

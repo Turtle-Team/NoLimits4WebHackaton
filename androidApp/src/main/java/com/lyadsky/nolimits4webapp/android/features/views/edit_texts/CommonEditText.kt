@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun CommonEditText(
+    modifier: Modifier = Modifier,
     title: String,
     placeholder: String? = null,
     isCenterText: Boolean = false,
@@ -31,7 +32,7 @@ fun CommonEditText(
 
     var text by remember { mutableStateOf(textState) }
 
-    Column {
+    Column(modifier) {
         Text(
             text = title, style = TextStyle(
                 fontSize = 24.sp,

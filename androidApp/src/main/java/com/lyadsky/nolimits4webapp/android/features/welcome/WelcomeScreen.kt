@@ -2,12 +2,7 @@ package com.lyadsky.nolimits4webapp.android.features.welcome
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -32,41 +27,48 @@ fun WelcomeScreen(
     viewModelWrapper: ViewModelWrapper<WelcomeViewModel> =
         getViewModel(named("WelcomeViewModel"))
 ) {
-    Column(
-        Modifier
-            .fillMaxSize()
-            .padding(top = 148.dp, bottom = 50.dp)
-            .verticalScroll(rememberScrollState()),
+    LazyColumn(
+        Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(vertical = 50.dp),
+        verticalArrangement = Arrangement.SpaceBetween,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_penguin), contentDescription = "",
-            )
-            Text(
-                text = "Детское приложение",
-                modifier = Modifier
-                    .padding(top = 34.dp)
-                    .fillMaxWidth(),
-                style = TextStyle(
-                    color = Color(0xFF494949),
-                    fontWeight = FontWeight(700),
-                    fontSize = 24.sp,
-                ),
-                textAlign = TextAlign.Center
-            )
+        item {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Image(
+                    modifier = Modifier.size(204.dp),
+                    painter = painterResource(id = R.drawable.monkey_clown), contentDescription = "",
+                )
+                Text(
+                    text = "Детское приложение",
+                    modifier = Modifier
+                        .padding(top = 34.dp)
+                        .fillMaxWidth(),
+                    style = TextStyle(
+                        color = Color(0xFF494949),
+                        fontWeight = FontWeight(700),
+                        fontSize = 24.sp,
+                    ),
+                    textAlign = TextAlign.Center
+                )
+            }
         }
 
-
-        Column(Modifier.padding(top = 140.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-            CommonButton(text = "Войти в аккаунт") {
-                viewModelWrapper.viewModel.onAuthClick()
-            }
-            Divider(Modifier.padding(top = 10.dp))
-            CommonButton(
-                text = "Зарегистрироваться",
-                color = Color(0xFFFEB242),
-            ){
-                viewModelWrapper.viewModel.onRegisterClick()
+        item {
+            Column(
+                Modifier.padding(top = 140.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                CommonButton(text = "Войти в аккаунт") {
+                    viewModelWrapper.viewModel.onAuthClick()
+                }
+                Spacer(Modifier.padding(top = 10.dp))
+                CommonButton(
+                    text = "Зарегистрироваться",
+                    color = Color(0xFFFEB242),
+                ) {
+                    viewModelWrapper.viewModel.onRegisterClick()
+                }
             }
         }
     }

@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun CommonButton(
+    modifier: Modifier = Modifier,
     text: String,
     color: Color? = Color(0xFF9094FB),
     onClick: () -> Unit?,
@@ -28,7 +29,7 @@ fun CommonButton(
         modifier = Modifier
             .width(330.dp)
             .clip(RoundedCornerShape(15.dp))
-            .height(50.dp),
+            .height(50.dp).then(modifier),
         onClick = { onClick() },
         shape = RoundedCornerShape(15.dp),
         colors = ButtonDefaults.buttonColors(
