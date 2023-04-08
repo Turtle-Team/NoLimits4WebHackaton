@@ -265,7 +265,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 40.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -296,7 +296,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 40.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -327,7 +327,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 40.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -357,7 +357,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 40.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -417,7 +417,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 40.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -447,7 +447,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 40.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -477,7 +477,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 40.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -508,7 +508,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 40.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -539,7 +539,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -570,7 +570,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 40.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -601,7 +601,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 40.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -632,7 +632,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 40.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -663,7 +663,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 40.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -693,7 +693,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -724,7 +724,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -754,7 +754,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -784,7 +784,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -814,7 +814,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -844,7 +844,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -874,7 +874,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -904,7 +904,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -934,7 +934,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -964,7 +964,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -994,7 +994,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -1024,7 +1024,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -1054,7 +1054,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -1094,7 +1094,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -1124,7 +1124,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -1154,7 +1154,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -1183,7 +1183,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -1213,7 +1213,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }
@@ -1244,7 +1244,7 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                                 fontWeight = FontWeight(700),
                                 color = Color(0xFFCAC0C9)
                             ),
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier.padding(start = 30.dp)
                         )
                     }
                 }

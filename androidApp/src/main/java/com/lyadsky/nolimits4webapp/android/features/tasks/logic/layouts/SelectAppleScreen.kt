@@ -31,6 +31,7 @@ import com.lyadsky.nolimits4webapp.android.R
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
 import com.lyadsky.nolimits4webapp.android.features.register.layouts.GridItems
 import com.lyadsky.nolimits4webapp.android.features.views.buttons.CommonButton
+import com.lyadsky.nolimits4webapp.android.utils.playAudio
 import com.lyadsky.nolimits4webapp.features.register.viewModel.RegisterViewModel
 import com.lyadsky.nolimits4webapp.features.tasks.viewModel.TaskViewModel
 import java.util.*
@@ -75,10 +76,13 @@ fun SelectAppleScreen(
                 SelectAppleGridItems(item, viewModelWrapper)
             }
         }
+        val context = LocalContext.current
         Row(horizontalArrangement = Arrangement.Center) {
             Image(
                 painter = painterResource(id = R.drawable.ic_sound), contentDescription = "",
-                modifier = Modifier.padding(bottom = 70.dp)
+                modifier = Modifier.padding(bottom = 70.dp).clickable {
+                    playAudio(context, R.raw.select_red_apple)
+                }
             )
         }
     }
