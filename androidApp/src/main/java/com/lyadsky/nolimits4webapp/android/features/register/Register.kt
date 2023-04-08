@@ -13,9 +13,9 @@ import com.lyadsky.nolimits4webapp.android.LocalColors
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
 import com.lyadsky.nolimits4webapp.android.features.infoUser.InfoUserScreen
 import com.lyadsky.nolimits4webapp.android.features.register.layouts.HobbiesScreen
+import com.lyadsky.nolimits4webapp.android.features.register.layouts.RegisterScreen
 import com.lyadsky.nolimits4webapp.android.features.views.bars.StageBar
 import com.lyadsky.nolimits4webapp.features.register.viewModel.RegisterViewModel
-import kotlinx.coroutines.delay
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.qualifier.named
 

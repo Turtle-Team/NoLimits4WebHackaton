@@ -44,6 +44,9 @@ class NavigatorImpl(
         navigateToNavBarDestination(ScreenRoute.Settings)
     }
 
+    override fun navigateToAlphabet() {
+        navigateToNavBarDestination(ScreenRoute.Alphabet)
+    }
 
     private fun navigateToNavBarDestination(root: ScreenRoute, clearBackStack: Boolean = false) {
         navController?.navigate(root.name) {
