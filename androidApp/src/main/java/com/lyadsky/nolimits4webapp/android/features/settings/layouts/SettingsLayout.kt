@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lyadsky.nolimits4webapp.android.R
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
+import com.lyadsky.nolimits4webapp.android.features.views.bars.CommonTopBar
 import com.lyadsky.nolimits4webapp.android.features.views.edit_texts.CommonEditText
 import com.lyadsky.nolimits4webapp.features.settings.viewModel.SettingsViewModel
 import org.koin.androidx.compose.getViewModel
@@ -33,7 +34,10 @@ fun SettingsLayout(
         getViewModel(named("SettingsViewModel"))
 ) {
     Column(Modifier.fillMaxWidth()) {
-        SettingsTopBar {
+//        SettingsTopBar {
+//            viewModelWrapper.viewModel.onBackClick()
+//        }
+        CommonTopBar(title = "Настройки") {
             viewModelWrapper.viewModel.onBackClick()
         }
 

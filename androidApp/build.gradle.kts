@@ -51,4 +51,6 @@ dependencies {
     val koinVersion = "3.3.2"
     implementation("io.insert-koin:koin-android:$koinVersion")
     implementation("io.insert-koin:koin-androidx-compose:3.4.1")
+
+    implementation("com.google.accompanist:accompanist-pager:0.31.0-alpha")
 }

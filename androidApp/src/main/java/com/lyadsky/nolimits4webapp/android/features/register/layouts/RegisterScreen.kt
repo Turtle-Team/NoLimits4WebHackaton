@@ -1,4 +1,4 @@
-package com.lyadsky.nolimits4webapp.android.features.register
+package com.lyadsky.nolimits4webapp.android.features.register.layouts
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn

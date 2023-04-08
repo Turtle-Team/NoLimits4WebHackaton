@@ -14,13 +14,12 @@ import androidx.navigation.compose.rememberNavController
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
 import com.lyadsky.nolimits4webapp.android.features.auth.AuthScreen
 import com.lyadsky.nolimits4webapp.android.features.catalog.CatalogScreen
-import com.lyadsky.nolimits4webapp.android.features.infoUser.InfoUserScreen
-import com.lyadsky.nolimits4webapp.android.features.welcome.WelcomeScreen
 import com.lyadsky.nolimits4webapp.android.features.main.MainScreen
 import com.lyadsky.nolimits4webapp.android.features.profile.ProfileScreen
-import com.lyadsky.nolimits4webapp.android.features.register.RegisterScreen
 import com.lyadsky.nolimits4webapp.android.features.register.RegisterScreens
 import com.lyadsky.nolimits4webapp.android.features.settings.SettingsScreen
+import com.lyadsky.nolimits4webapp.android.features.tasks.alphabet.AlphabetScreen
+import com.lyadsky.nolimits4webapp.android.features.welcome.WelcomeScreen
 import com.lyadsky.nolimits4webapp.common.navigation.ScreenRoute
 import com.lyadsky.nolimits4webapp.features.mainNavigation.viewModel.MainNavigationViewModel
 import org.koin.androidx.compose.getViewModel
@@ -77,6 +76,9 @@ fun MainNavigationScreen(
             }
             composable(route = ScreenRoute.Settings.name) {
                 SettingsScreen()
+            }
+            composable(route = ScreenRoute.Alphabet.name) {
+                AlphabetScreen()
             }
         }
     }
