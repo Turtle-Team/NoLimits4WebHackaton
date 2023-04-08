@@ -2,6 +2,7 @@ package com.lyadsky.nolimits4webapp.android.features.tasks.logic.layouts
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -54,12 +55,12 @@ fun PutDownCardScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
             items(items = flowersList){item ->
                 PutDownCardItem(imageId = item, viewModelWrapper = viewModelWrapper)
             }
-            item {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_mic), contentDescription = "",
-                    modifier = Modifier.padding(top = 70.dp), tint = Color(0xFF474992)
-                )
-            }
+        }
+        Row(horizontalArrangement = Arrangement.Center) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_sound), contentDescription = "",
+                modifier = Modifier.padding(bottom = 70.dp)
+            )
         }
     }
 }
@@ -73,8 +74,13 @@ fun PutDownCardItem(imageId: Int, viewModelWrapper: ViewModelWrapper<TaskViewMod
                 86.dp,
                 120.dp
             )
-            .shadow(4.dp, RoundedCornerShape(15.dp))
-            .background(color, RoundedCornerShape(15.dp))
+            .shadow(if (color == Color.Red) 0.dp else 4.dp, RoundedCornerShape(15.dp))
+            .background(Color.White, RoundedCornerShape(15.dp))
+            .border(
+                width = if (color == Color.Red) 2.dp else 0.dp,
+                color = color,
+                shape = RoundedCornerShape(15.dp)
+            )
             .clickable {
                 if (imageId == R.drawable.ic_flower_horosh) {
                     color = Color.Green

@@ -5,10 +5,6 @@ import com.lyadsky.nolimits4webapp.android.navigation.NavigatorImpl
 import com.lyadsky.nolimits4webapp.common.navigation.Navigator
 import com.lyadsky.nolimits4webapp.features.catalog.viewModel.CatalogViewModel
 import com.lyadsky.nolimits4webapp.features.catalog.viewModel.CatalogViewModelImpl
-import com.lyadsky.nolimits4webapp.features.helicopterMinigame.HelicopterMinigameViewModel
-import com.lyadsky.nolimits4webapp.features.helicopterMinigame.HelicopterMinigameViewModelImpl
-import com.lyadsky.nolimits4webapp.features.main.viewModel.MainViewModel
-import com.lyadsky.nolimits4webapp.features.main.viewModel.MainViewModelImpl
 import com.lyadsky.nolimits4webapp.features.mainNavigation.viewModel.MainNavigationViewModelImpl
 import com.lyadsky.nolimits4webapp.features.profile.viewModel.ProfileViewModel
 import com.lyadsky.nolimits4webapp.features.profile.viewModel.ProfileViewModelImpl

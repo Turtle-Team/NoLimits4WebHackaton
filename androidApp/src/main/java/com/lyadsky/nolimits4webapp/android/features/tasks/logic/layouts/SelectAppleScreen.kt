@@ -3,6 +3,7 @@ package com.lyadsky.nolimits4webapp.android.features.tasks.logic.layouts
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -65,12 +66,12 @@ fun SelectAppleScreen(
             items(items = fructsList) { item ->
                 SelectAppleGridItems(item, viewModelWrapper)
             }
-            item {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_mic), contentDescription = "",
-                    modifier = Modifier.padding(top = 70.dp), tint = Color(0xFF474992)
-                )
-            }
+        }
+        Row(horizontalArrangement = Arrangement.Center) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_sound), contentDescription = "",
+                modifier = Modifier.padding(bottom = 70.dp)
+            )
         }
     }
 }
@@ -86,14 +87,19 @@ fun SelectAppleGridItems(imageId: Int, viewModelWrapper: ViewModelWrapper<TaskVi
                 156.dp,
                 178.dp
             )
-            .shadow(4.dp, RoundedCornerShape(15.dp))
-            .background(color, RoundedCornerShape(15.dp))
+            .shadow(if (color == Color.Red) 0.dp else 4.dp, RoundedCornerShape(15.dp))
+            .background(Color.White, RoundedCornerShape(15.dp))
+            .border(
+                width = if (color == Color.Red) 2.dp else 0.dp,
+                color = color,
+                shape = RoundedCornerShape(15.dp)
+            )
             .clickable {
                 if (imageId == R.drawable.ic_apple) {
                     color = Color.Green
                     viewModelWrapper.viewModel.onNextClick()
-                }else {
-                    color =  Color.Red
+                } else {
+                    color = Color.Red
                 }
             },
         horizontalAlignment = Alignment.CenterHorizontally,

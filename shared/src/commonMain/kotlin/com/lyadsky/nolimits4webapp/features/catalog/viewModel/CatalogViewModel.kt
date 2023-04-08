@@ -11,6 +11,7 @@ interface CatalogViewModel : KmpViewModel, SubScreenViewModel {
     fun onLogicClick()
     fun onShapeClick()
     fun onMathematicClick()
+    fun onNumberClick()
 }
 
 class CatalogViewModelImpl(
@@ -31,5 +32,9 @@ class CatalogViewModelImpl(
 
     override fun onMathematicClick() {
         navigator.navigateToMathematic()
+    }
+
+    override fun onNumberClick() {
+        navigator.navigateToNumbers()
     }
 }

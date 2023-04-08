@@ -58,22 +58,6 @@ fun OnePrimerScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
 
         LazyColumn {
 
-            item {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_micro), contentDescription = "",
-                    modifier = Modifier.size(68.dp)
-                        .clickable {
-//                            try {
-//                                Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
-//                            } catch (e: ActivityNotFoundException) {
-//                                CoroutineScope(Dispatchers.Main).launch {
-//                                    errorService.showError("Нет сервиса распознавания речи")
-//                                }
-//                            }
-                        }
-                )
-            }
-
 //            item {
 //                Text(
 //                    text = "... + 5 = 10",
@@ -89,6 +73,13 @@ fun OnePrimerScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
 ////            modifier = Modifier.padding(top = 47.dp)
 //                )
 //            }
+        }
+
+        Row(horizontalArrangement = Arrangement.Center) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_sound), contentDescription = "",
+                modifier = Modifier.padding(bottom = 70.dp)
+            )
         }
     }
 }

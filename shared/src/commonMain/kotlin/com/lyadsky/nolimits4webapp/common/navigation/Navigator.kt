@@ -12,7 +12,9 @@ enum class ScreenRoute {
     Logic,
     Shapes,
     Mathematic,
-    Helicopter
+    Helicopter,
+    Mathematic,
+    Numbers
 }
 
 interface Navigator {
@@ -28,6 +30,7 @@ interface Navigator {
     fun navigateToShapes()
     fun navigateToMathematic()
     fun navigateToHelicGame()
+    fun navigateToNumbers()
 
     fun register()
     fun signOut()

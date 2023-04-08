@@ -78,6 +78,10 @@ class NavigatorImpl(
             }
         }    }
 
+    override fun navigateToNumbers() {
+        navigateToNavBarDestination(ScreenRoute.Numbers)
+    }
+
     private fun navigateToNavBarDestination(root: ScreenRoute, clearBackStack: Boolean = false) {
         navController?.navigate(root.name) {
                 popUpTo(navController!!.graph.findStartDestination().id) {
