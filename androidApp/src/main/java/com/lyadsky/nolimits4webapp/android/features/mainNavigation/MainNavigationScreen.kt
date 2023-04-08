@@ -19,6 +19,7 @@ import com.lyadsky.nolimits4webapp.android.features.welcome.WelcomeScreen
 import com.lyadsky.nolimits4webapp.android.features.main.MainScreen
 import com.lyadsky.nolimits4webapp.android.features.profile.ProfileScreen
 import com.lyadsky.nolimits4webapp.android.features.register.RegisterScreen
+import com.lyadsky.nolimits4webapp.android.features.settings.SettingsScreen
 import com.lyadsky.nolimits4webapp.common.navigation.ScreenRoute
 import com.lyadsky.nolimits4webapp.features.mainNavigation.viewModel.MainNavigationViewModel
 import org.koin.androidx.compose.getViewModel
@@ -72,6 +73,9 @@ fun MainNavigationScreen(
             }
             composable(route = ScreenRoute.Catalog.name) {
                 CatalogScreen()
+            }
+            composable(route = ScreenRoute.Settings.name) {
+                SettingsScreen()
             }
         }
     }
