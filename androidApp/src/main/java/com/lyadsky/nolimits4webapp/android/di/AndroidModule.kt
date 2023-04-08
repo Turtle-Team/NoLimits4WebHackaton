@@ -33,7 +33,7 @@ fun androidModule() = module {
     }
 
     viewModel(named("RegisterViewModel")) {
-        ViewModelWrapper<RegisterViewModel>(RegisterViewModelImpl(get()))
+        ViewModelWrapper<RegisterViewModel>(RegisterViewModelImpl(get(), get()))
     }
 
     viewModel(named("ProfileViewModel")) {
@@ -41,7 +41,7 @@ fun androidModule() = module {
     }
 
     viewModel(named("SettingsViewModel")) {
-        ViewModelWrapper<SettingsViewModel>(SettingsViewModelImpl(get()))
+        ViewModelWrapper<SettingsViewModel>(SettingsViewModelImpl(get(), get()))
     }
 
     viewModel(named("CatalogViewModel")) {

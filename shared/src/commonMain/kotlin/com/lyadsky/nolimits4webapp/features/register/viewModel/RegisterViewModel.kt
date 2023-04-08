@@ -2,6 +2,7 @@ package com.lyadsky.nolimits4webapp.features.register.viewModel
 
 import com.lyadsky.nolimits4webapp.common.navigation.Navigator
 import com.lyadsky.nolimits4webapp.common.navigation.ScreenRoute
+import com.lyadsky.nolimits4webapp.common.user_data.UserDataManager
 import com.lyadsky.nolimits4webapp.common.viewModel.KmpViewModel
 import com.lyadsky.nolimits4webapp.common.viewModel.KmpViewModelImpl
 import com.lyadsky.nolimits4webapp.common.viewModel.SubScreenViewModel
@@ -32,7 +33,8 @@ interface RegisterViewModel : KmpViewModel, SubScreenViewModel {
 }
 
 class RegisterViewModelImpl(
-    override val navigator: Navigator
+    override val navigator: Navigator,
+    private val userDataManager: UserDataManager
 ) : KoinComponent, KmpViewModelImpl(), RegisterViewModel {
     private val _state = MutableStateFlow(RegisterState())
     override val state: StateFlow<RegisterState> = _state.asStateFlow()
@@ -42,7 +44,6 @@ class RegisterViewModelImpl(
             _state.update { it.copy(stage = _state.value.stage + 1) }
         else {
             navigator.navigateToMain(true)
-            //TODO навигация на главную или куда то ещё и сохранение всех данных о пользователе
         }
     }
 

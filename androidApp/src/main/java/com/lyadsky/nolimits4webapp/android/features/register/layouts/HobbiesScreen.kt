@@ -22,11 +22,14 @@ import com.lyadsky.nolimits4webapp.android.LocalColors
 import com.lyadsky.nolimits4webapp.android.R
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
 import com.lyadsky.nolimits4webapp.android.features.views.buttons.CommonButton
+import com.lyadsky.nolimits4webapp.common.user_data.UserDataManager
 import com.lyadsky.nolimits4webapp.features.register.viewModel.RegisterViewModel
+import org.koin.androidx.compose.get
 
 @Composable
 fun HobbiesScreen(
-    viewModelWrapper: ViewModelWrapper<RegisterViewModel>
+    viewModelWrapper: ViewModelWrapper<RegisterViewModel>,
+    userData: UserDataManager = get()
 ) {
 
     val isHorizontal = LocalConfiguration.current.orientation == 2
@@ -46,8 +49,8 @@ fun HobbiesScreen(
         )
         LazyVerticalGrid(
             columns = GridCells.Fixed(if (isHorizontal) 4 else 2),
-            contentPadding = PaddingValues(bottom = 50.dp, start = 16.dp, end = 16.dp),
-            modifier = Modifier.weight(1F),
+            contentPadding = PaddingValues(bottom = 40.dp,start = 16.dp, end = 16.dp),
+            modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
@@ -55,8 +58,10 @@ fun HobbiesScreen(
             items(count = 20) {
                 GridItems()
             }
-            item(span = { GridItemSpan(8) }) {
+
+            item(span = { GridItemSpan(if (isHorizontal) 4 else 2) }) {
                 CommonButton(text = "Создать") {
+                    userData.saveAuthData("zaglushka vremennaya")
                     viewModelWrapper.viewModel.onNextClick()
                 }
             }

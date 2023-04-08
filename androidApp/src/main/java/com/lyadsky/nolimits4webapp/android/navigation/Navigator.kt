@@ -20,8 +20,8 @@ class NavigatorImpl(
         navigateToNavBarDestination(ScreenRoute.Main, clearBackStack)
     }
 
-    override fun navigateToWelcome() {
-        navigateToNavBarDestination(ScreenRoute.Welcome)
+    override fun navigateToWelcome(clearBackStack: Boolean) {
+        navigateToNavBarDestination(ScreenRoute.Welcome, clearBackStack)
     }
 
     override fun navigateToAuth() {

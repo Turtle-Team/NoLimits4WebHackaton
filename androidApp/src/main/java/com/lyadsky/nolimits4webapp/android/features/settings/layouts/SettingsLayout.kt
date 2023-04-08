@@ -3,6 +3,7 @@ package com.lyadsky.nolimits4webapp.android.features.settings.layouts
 import android.media.MediaPlayer
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
@@ -24,14 +25,16 @@ import com.lyadsky.nolimits4webapp.android.R
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
 import com.lyadsky.nolimits4webapp.android.features.views.bars.CommonTopBar
 import com.lyadsky.nolimits4webapp.android.features.views.edit_texts.CommonEditText
+import com.lyadsky.nolimits4webapp.common.user_data.UserDataManager
 import com.lyadsky.nolimits4webapp.features.settings.viewModel.SettingsViewModel
+import org.koin.androidx.compose.get
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.qualifier.named
 
 @Composable
 fun SettingsLayout(
     viewModelWrapper: ViewModelWrapper<SettingsViewModel> =
-        getViewModel(named("SettingsViewModel"))
+        getViewModel(named("SettingsViewModel")),
 ) {
     Column(Modifier.fillMaxWidth()) {
 //        SettingsTopBar {
@@ -41,7 +44,10 @@ fun SettingsLayout(
             viewModelWrapper.viewModel.onBackClick()
         }
 
-        LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
+        LazyColumn(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            contentPadding = PaddingValues(horizontal = 10.dp)
+        ) {
 
             item {
                 Spacer(modifier = Modifier.padding(top = 35.dp))
@@ -55,17 +61,17 @@ fun SettingsLayout(
                 )
 
                 Spacer(modifier = Modifier.padding(top = 54.dp))
-                CommonEditText(title = "Имя пользователя", textSize = 16){
+                CommonEditText(title = "Имя пользователя", textSize = 16) {
 
                 }
 
                 Spacer(modifier = Modifier.padding(top = 30.dp))
-                CommonEditText(title = "Электронная почта", textSize = 16){
+                CommonEditText(title = "Электронная почта", textSize = 16) {
 
                 }
 
                 Spacer(modifier = Modifier.padding(top = 30.dp))
-                CommonEditText(title = "Пароль", textSize = 16){
+                CommonEditText(title = "Пароль", textSize = 16) {
 
                 }
 
@@ -81,8 +87,12 @@ fun SettingsLayout(
                             fontSize = 16.sp,
                             fontWeight = FontWeight(700),
                             color = Color(0xFFB4B4B4),
-                            textAlign = TextAlign.Center
-                        ), modifier = Modifier.padding(top = 30.dp)
+                            textAlign = TextAlign.Center),
+                        modifier = Modifier
+                            .padding(top = 30.dp)
+                            .clickable(MutableInteractionSource(), indication = null) {
+                                viewModelWrapper.viewModel.onExitAccount()
+                            }
                     )
                 }
             }
@@ -102,7 +112,9 @@ fun SettingsTopBar(backButton: () -> Unit) {
                 .clickable { backButton() }
         )
         Text(
-            text = "Настройки", modifier = Modifier.padding(start = 20.dp, bottom = 20.dp), style = TextStyle(
+            text = "Настройки",
+            modifier = Modifier.padding(start = 20.dp, bottom = 20.dp),
+            style = TextStyle(
                 fontSize = 20.sp,
                 fontWeight = FontWeight(700),
                 color = Color(0xFF474992)
@@ -116,7 +128,8 @@ fun ChangeTheme() {
     Column(
         Modifier
             .fillMaxWidth()
-            .padding(start = 32.dp)) {
+            .padding(start = 32.dp)
+    ) {
         Text(
             text = "Выберите тему приложения", style = TextStyle(
                 fontSize = 16.sp,
