@@ -41,7 +41,7 @@ fun AlphabetLayout(
             viewModelWrapper.viewModel.onBackClick()
         }
 
-        val letters = listOf<String>(
+        val letters = listOf(
             "Аа", "Бб", "Вв", "Гг", "Дд", "Ее", "Ёё",
             "Жж", "Зз", "Ии", "Йи", "Кк", "Лл", "Мм",
             "Нн", "Оо", "Пп", "Рр", "Сс", "Тт", "Уу",
@@ -204,7 +204,10 @@ fun AlphabetLayout(
                                     playAudio(context, R.raw.iam)
                                 }
 
-                                else -> {}
+                                else -> {
+                                    Log.e("click", "click")
+                                    playAudio(context, R.raw.iam)
+                                }
                             }
                         }
                     }
@@ -228,23 +231,1025 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
         onClick = { onClick() }
     ) {
         Column(
-            Modifier.padding(15.dp),
+            Modifier
+                .padding(15.dp)
+                .width(156.dp)
+                .height(178.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_matematic), contentDescription = "",
-                modifier = Modifier
-                    .size(100.dp)
-            )
-            Text(
-                text = letter, style = TextStyle(
-                    fontFamily = font,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight(700),
-                    color = Color(0xFF474992)
-                )
-            )
+            when (letter) {
+                "Аа" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_shark),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Акула", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 40.dp)
+                        )
+                    }
+                }
+                "Бб" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_squirrel),
+                        contentDescription = ""
+                    )
+
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Белка", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 40.dp)
+                        )
+                    }
+                }
+                "Вв" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_camel),
+                        contentDescription = ""
+                    )
+
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Верблюд", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 40.dp)
+                        )
+                    }
+                }
+                "Гг" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_viper),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Гадюка", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 40.dp)
+                        )
+                    }
+                }
+                "Дд" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_dolphin),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Дельфин", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 30.dp)
+                        )
+                    }
+                }
+                "Ее" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_raccoon),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Енот", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 40.dp)
+                        )
+                    }
+                }
+                "Ёё" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_hedgehog),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Ёж", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 40.dp)
+                        )
+                    }
+                }
+                "Жж" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_girraffe),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Жираф", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 40.dp)
+                        )
+                    }
+                }
+                "Зз" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_zebra),
+                        contentDescription = ""
+                    )
+
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Зебра", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 40.dp)
+                        )
+                    }
+                }
+                "Ии" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_iguana),
+                        contentDescription = ""
+                    )
+
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Хамилион", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+                "Йи" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_york),
+                        contentDescription = ""
+                    )
+
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Йорк", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 40.dp)
+                        )
+                    }
+                }
+                "Кк" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_whale),
+                        contentDescription = ""
+                    )
+
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Кит", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 40.dp)
+                        )
+                    }
+                }
+                "Лл" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_frog),
+                        contentDescription = ""
+                    )
+
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Лягушка", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 40.dp)
+                        )
+                    }
+                }
+                "Мм" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_walrus),
+                        contentDescription = ""
+                    )
+
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Морж ", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 40.dp)
+                        )
+                    }
+                }
+                "Нн" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_rhinoceros),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Носорог", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+                "Оо" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_octopus),
+                        contentDescription = ""
+                    )
+
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Осьминог", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+                "Пп" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_penguin),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Пингвин", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+                "Рр" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_fish),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Рыба", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+                "Сс" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_elephant),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Слон", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+                "Тт" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_tiger),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Тигр", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+                "Уу" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_duck),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Утка", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+                "Фф" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_flamingo),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Фламинго", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+                "Хх" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_hamster),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Хомяк", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+                "Цц" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_heron),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Цапля", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+                "Чч" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_turtle),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Черепаха", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+                "Шш" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_shimpanze),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Шимпанзе", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+                "Щщ" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_shuka),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Щука", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+                "Ъъ" -> {
+                    Text(
+                        text = letter, style = TextStyle(
+                            fontFamily = font,
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight(700),
+                            color = Color(0xFF474992)
+                        )
+                    )
+                }
+                "Ыы" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_mouse),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Мышь", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+                "Ьь" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_lynx),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Рысь", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+                "Ээ" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_emu),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Эму", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+                "Юю" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_lemur),
+                        contentDescription = ""
+                    )
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Лемур", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+                "ЯЯ" -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_lizard),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Ящерица", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+
+                else -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_lizard),
+                        contentDescription = ""
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Ящерица", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
+                    }
+                }
+
+            }
         }
     }
 }
