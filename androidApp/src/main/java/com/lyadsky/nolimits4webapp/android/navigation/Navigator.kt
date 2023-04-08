@@ -48,6 +48,18 @@ class NavigatorImpl(
         navigateToNavBarDestination(ScreenRoute.Alphabet)
     }
 
+    override fun navigateToLogic() {
+        navigateToNavBarDestination(ScreenRoute.Logic)
+    }
+
+    override fun navigateToShapes() {
+        navigateToNavBarDestination(ScreenRoute.Shapes)
+    }
+
+    override fun navigateToMathematic() {
+        navigateToNavBarDestination(ScreenRoute.Mathematic)
+    }
+
     override fun navigateToHelicGame() {
         navigateToNavBarDestination(ScreenRoute.Helicopter)
     }

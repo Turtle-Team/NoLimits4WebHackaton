@@ -21,6 +21,7 @@ class MainNavigationViewModelImpl(
             ScreenRoute.Register -> navigator.navigateToRegister()
             ScreenRoute.Catalog -> navigator.navigateToCatalog()
             ScreenRoute.Alphabet -> navigator.navigateToAlphabet()
+            ScreenRoute.Shapes -> navigator.navigateToShapes()
             else -> {}
         }
     }

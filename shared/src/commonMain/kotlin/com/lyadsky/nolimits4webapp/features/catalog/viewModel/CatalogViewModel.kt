@@ -8,6 +8,9 @@ import org.koin.core.component.KoinComponent
 
 interface CatalogViewModel : KmpViewModel, SubScreenViewModel {
     fun onAlphabetClick()
+    fun onLogicClick()
+    fun onShapeClick()
+    fun onMathematicClick()
 }
 
 class CatalogViewModelImpl(
@@ -16,5 +19,17 @@ class CatalogViewModelImpl(
 
     override fun onAlphabetClick() {
         navigator.navigateToAlphabet()
+    }
+
+    override fun onLogicClick() {
+        navigator.navigateToLogic()
+    }
+
+    override fun onShapeClick() {
+        navigator.navigateToShapes()
+    }
+
+    override fun onMathematicClick() {
+        navigator.navigateToMathematic()
     }
 }

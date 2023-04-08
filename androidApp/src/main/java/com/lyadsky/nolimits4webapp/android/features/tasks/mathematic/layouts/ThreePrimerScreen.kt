@@ -1,0 +1,10 @@
+package com.lyadsky.nolimits4webapp.android.features.tasks.mathematic.layouts
+
+import androidx.compose.runtime.Composable
+import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
+import com.lyadsky.nolimits4webapp.features.tasks.viewModel.TaskViewModel
+
+@Composable
+fun ThreePrimerScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
+
+}
