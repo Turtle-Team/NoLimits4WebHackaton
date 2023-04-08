@@ -17,6 +17,7 @@ import com.lyadsky.nolimits4webapp.android.features.catalog.CatalogScreen
 import com.lyadsky.nolimits4webapp.android.features.infoUser.InfoUserScreen
 import com.lyadsky.nolimits4webapp.android.features.welcome.WelcomeScreen
 import com.lyadsky.nolimits4webapp.android.features.main.MainScreen
+import com.lyadsky.nolimits4webapp.android.features.profile.ProfileScreen
 import com.lyadsky.nolimits4webapp.android.features.register.RegisterScreen
 import com.lyadsky.nolimits4webapp.android.features.register.RegisterScreens
 import com.lyadsky.nolimits4webapp.common.navigation.ScreenRoute
@@ -59,7 +60,7 @@ fun MainNavigationScreen(
                 MainScreen()
             }
             composable(route = ScreenRoute.Profile.name) {
-                WelcomeScreen()
+                ProfileScreen()
             }
             composable(route = ScreenRoute.Auth.name) {
                 AuthScreen()
