@@ -1,9 +1,7 @@
 package com.lyadsky.nolimits4webapp.android.features.profile.layouts
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -14,10 +12,10 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -26,8 +24,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lyadsky.nolimits4webapp.android.R
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
+import com.lyadsky.nolimits4webapp.data.TaskStats
 import com.lyadsky.nolimits4webapp.features.profile.viewModel.ProfileViewModel
-import com.lyadsky.nolimits4webapp.features.register.viewModel.RegisterViewModel
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.qualifier.named
 
@@ -36,6 +34,9 @@ fun ProfileLayout(
     viewModelWrapper: ViewModelWrapper<ProfileViewModel> =
         getViewModel(named("ProfileViewModel"))
 ) {
+
+    val state = viewModelWrapper.viewModel.state.collectAsState()
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier
             .clip(RoundedCornerShape(15.dp))
@@ -111,7 +112,7 @@ fun ProfileLayout(
             TaskData("Физика", "Изучение алфавита", 75, true),
         )
 
-        CategoryItem()
+        state.value?.let { CategoryItem(it) }
     }
 }
 
@@ -123,17 +124,15 @@ data class TaskData(
 )
 
 @Composable
-fun CategoryItem() {
+fun CategoryItem(value: TaskStats) {
     val taskFinished = listOf<TaskData>(
-        TaskData("Алфавит", "Изучение алфавита", 100, true),
-        TaskData("Математика", "Изучение алфавита", 25, false),
-        TaskData("Физика", "Изучение алфавита", 75, true),
-        TaskData("Алфавит", "Изучение алфавита", 100, true),
-        TaskData("Математика", "Изучение алфавита", 25, false),
-        TaskData("Физика", "Изучение алфавита", 75, true),
-        TaskData("Алфавит", "Изучение алфавита", 100, true),
-        TaskData("Математика", "Изучение алфавита", 25, false),
-        TaskData("Физика", "Изучение алфавита", 75, true),
+        TaskData("Алфавит", "Изучение алфавита", value.alphabet, true),
+        TaskData("Математика", "Изучение алфавита", value.mathematics, false),
+        TaskData("Логика", "Изучение алфавита", value.logic, true),
+        TaskData("Цифры", "Изучение алфавита", value.numbers, false),
+        TaskData("Формы", "Изучение алфавита", value.figures, true),
+        TaskData("Цвета", "Изучение алфавита", value.colors, true),
+        TaskData("Английский", "Изучение алфавита", value.english, false),
     )
 
     LazyColumn {

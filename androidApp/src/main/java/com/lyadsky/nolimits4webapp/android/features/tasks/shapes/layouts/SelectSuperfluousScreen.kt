@@ -68,7 +68,7 @@ fun SelectSuperfluousScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
         Row(horizontalArrangement = Arrangement.Center) {
             Image(
                 painter = painterResource(id = R.drawable.ic_sound), contentDescription = "",
-                modifier = Modifier.padding(bottom = 70.dp)
+                modifier = Modifier.padding(bottom = 70.dp).clickable {  }
             )
         }
     }

@@ -49,7 +49,7 @@ fun androidModule() = module {
     }
 
     viewModel(named("ProfileViewModel")) {
-        ViewModelWrapper<ProfileViewModel>(ProfileViewModelImpl(get(), get()))
+        ViewModelWrapper<ProfileViewModel>(ProfileViewModelImpl(get(), get(), get()))
     }
 
     viewModel(named("SettingsViewModel")) {

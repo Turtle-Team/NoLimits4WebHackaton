@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.core.os.bundleOf
 import androidx.navigation.compose.rememberNavController
 import com.lyadsky.nolimits4webapp.android.features.mainNavigation.MainNavigationScreen
 import com.lyadsky.nolimits4webapp.android.navigation.AndroidNavigator
@@ -29,6 +30,8 @@ class MainActivity : ComponentActivity() {
                 textToSpeech.language = local
             }
         }
+
+        textToSpeech.speak("asdpkapsodkapsodk",TextToSpeech.QUEUE_FLUSH, null)
 
         setContent {
             val navController = rememberNavController()
