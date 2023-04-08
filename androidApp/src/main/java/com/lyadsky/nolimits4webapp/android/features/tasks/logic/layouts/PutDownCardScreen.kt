@@ -8,12 +8,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -38,23 +36,23 @@ fun PutDownCardScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
 
 
         Text(
-            text = "Поставь карточки в ячейки по порядку",
+            text = "Найди самый большой шарик",
             fontSize = 24.sp,
             fontWeight = FontWeight(700),
             color = LocalColors.current.color6
         )
-        val flowersList = listOf(
-            R.drawable.ic_flower_horosh,
-            R.drawable.ic_flower_loh,
-            R.drawable.ic_flower_pred_full
-        )
 
+        val bollsList = listOf(
+            R.drawable.ic_bolls,
+            R.drawable.ic_bolls_2,
+            R.drawable.ic_bolls_3
+        )
         LazyRow(
             modifier = Modifier
                 .weight(1F)
                 .padding(top = 50.dp),
         ) {
-            items(items = flowersList){item ->
+            items(items = bollsList) { item ->
                 PutDownCardItem(imageId = item, viewModelWrapper = viewModelWrapper)
             }
         }
@@ -62,9 +60,11 @@ fun PutDownCardScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
         Row(horizontalArrangement = Arrangement.Center) {
             Image(
                 painter = painterResource(id = R.drawable.ic_sound), contentDescription = "",
-                modifier = Modifier.padding(bottom = 70.dp).clickable {
-                    playAudio(context, R.raw.insert_card)
-                }
+                modifier = Modifier
+                    .padding(bottom = 70.dp)
+                    .clickable {
+                        playAudio(context, R.raw.find_boll)
+                    }
             )
         }
     }
@@ -79,7 +79,6 @@ fun PutDownCardItem(imageId: Int, viewModelWrapper: ViewModelWrapper<TaskViewMod
                 86.dp,
                 120.dp
             )
-            .shadow(if (color == Color.Red) 0.dp else 4.dp, RoundedCornerShape(15.dp))
             .background(Color.White, RoundedCornerShape(15.dp))
             .border(
                 width = if (color == Color.Red) 2.dp else 0.dp,
@@ -87,7 +86,7 @@ fun PutDownCardItem(imageId: Int, viewModelWrapper: ViewModelWrapper<TaskViewMod
                 shape = RoundedCornerShape(15.dp)
             )
             .clickable {
-                if (imageId == R.drawable.ic_flower_horosh) {
+                if (imageId == R.drawable.ic_bolls_3) {
                     color = Color.Green
                     viewModelWrapper.viewModel.onNextClick()
                 } else {
@@ -98,7 +97,6 @@ fun PutDownCardItem(imageId: Int, viewModelWrapper: ViewModelWrapper<TaskViewMod
         verticalArrangement = Arrangement.Center
     ) {
         Image(
-            modifier = Modifier.size(126.dp),
             painter = painterResource(id = imageId),
             contentDescription = ""
         )
