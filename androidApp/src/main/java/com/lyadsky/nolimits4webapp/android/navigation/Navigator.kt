@@ -40,6 +40,10 @@ class NavigatorImpl(
         navigateToNavBarDestination(ScreenRoute.Catalog)
     }
 
+    override fun navigateToSettings() {
+        navigateToNavBarDestination(ScreenRoute.Settings)
+    }
+
 
     private fun navigateToNavBarDestination(root: ScreenRoute, clearBackStack: Boolean = false) {
         navController?.navigate(root.name) {
