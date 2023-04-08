@@ -19,7 +19,7 @@ actual class NativeUserDataManagerImpl(private val context: Context) : KoinCompo
     private val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
     override fun saveAuthData(encodedUserData: String) {
-        prefs.edit().putString(USER_DATA, encodedUserData).apply()
+        prefs.edit().putString(USER_DATA, encodedUserData).commit()
     }
 
     override fun getUserData(): String {
@@ -31,7 +31,7 @@ actual class NativeUserDataManagerImpl(private val context: Context) : KoinCompo
     }
 
     override fun clearData() {
-        prefs.edit().clear().apply()
+        prefs.edit().putString(USER_DATA, def_val).commit()
     }
 }
 

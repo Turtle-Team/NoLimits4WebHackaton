@@ -48,11 +48,12 @@ class NavigatorImpl(
         navigateToNavBarDestination(ScreenRoute.Alphabet)
     }
 
+    override fun navigateToHelicGame() {
+        navigateToNavBarDestination(ScreenRoute.Helicopter)
+    }
+
     private fun navigateToNavBarDestination(root: ScreenRoute, clearBackStack: Boolean = false) {
         navController?.navigate(root.name) {
-            if (clearBackStack)
-                popUpTo(0)
-            else
                 popUpTo(navController!!.graph.findStartDestination().id) {
                     saveState = true
                 }

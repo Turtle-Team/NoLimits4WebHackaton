@@ -23,10 +23,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lyadsky.nolimits4webapp.android.LocalColors
 import com.lyadsky.nolimits4webapp.android.R.drawable
+import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
 import com.lyadsky.nolimits4webapp.android.font
+import com.lyadsky.nolimits4webapp.features.main.viewModel.MainViewModel
 
 @Composable
-fun MainList() {
+fun MainList(viewModel: ViewModelWrapper<MainViewModel>) {
     LazyColumn(
         contentPadding = PaddingValues(vertical = 60.dp, horizontal = 16.dp)
     ) {
@@ -167,7 +169,7 @@ fun MainList() {
                         fontWeight = FontWeight(700),
                         color = LocalColors.current.color6
                     )
-                    Button(onClick = { /*TODO*/ },
+                    Button(onClick = { viewModel.viewModel.navigateToHelicGame() },
                     colors = ButtonDefaults.buttonColors(backgroundColor = LocalColors.current.color5)) {
                         Text(
                             text = "Играть",

@@ -47,6 +47,8 @@ dependencies {
     implementation("androidx.compose.material:material:1.3.1")
     implementation("androidx.activity:activity-compose:1.6.1")
 
+    implementation( "com.google.accompanist:accompanist-systemuicontroller:0.30.1")
+
     // DI
     val koinVersion = "3.3.2"
     implementation("io.insert-koin:koin-android:$koinVersion")

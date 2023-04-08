@@ -28,8 +28,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         val startDestination = defineStartDestination()
 
-        window.statusBarColor = Color.White.toArgb()
-
         setContent {
             val navController = rememberNavController()
             rootNavigation.navController = navController
