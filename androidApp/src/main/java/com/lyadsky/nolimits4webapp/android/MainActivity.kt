@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.navigation.compose.rememberNavController
 import com.lyadsky.nolimits4webapp.android.features.mainNavigation.MainNavigationScreen
 import com.lyadsky.nolimits4webapp.android.navigation.AndroidNavigator
@@ -25,6 +27,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val startDestination = defineStartDestination()
+
+        window.statusBarColor = Color.White.toArgb()
 
         setContent {
             val navController = rememberNavController()

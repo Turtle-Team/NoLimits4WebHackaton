@@ -5,8 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -16,6 +15,7 @@ import com.lyadsky.nolimits4webapp.android.features.infoUser.InfoUserScreen
 import com.lyadsky.nolimits4webapp.android.features.register.layouts.HobbiesScreen
 import com.lyadsky.nolimits4webapp.android.features.views.bars.StageBar
 import com.lyadsky.nolimits4webapp.features.register.viewModel.RegisterViewModel
+import kotlinx.coroutines.delay
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.qualifier.named
 
@@ -37,11 +37,12 @@ fun RegisterScreens(
             .background(LocalColors.current.background),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        StageBar(Modifier.padding(top = 50.dp),number = state.value.stage)
+        StageBar(Modifier.padding(top = 50.dp),number = state.value.stage, 3)
         when (state.value.stage) {
             1 -> RegisterScreen(viewModelWrapper)
             2 -> InfoUserScreen(viewModelWrapper)
             3 -> HobbiesScreen(viewModelWrapper)
+            else -> {}
         }
     }
 }
