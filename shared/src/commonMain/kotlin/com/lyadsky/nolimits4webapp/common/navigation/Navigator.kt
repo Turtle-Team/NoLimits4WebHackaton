@@ -13,7 +13,6 @@ enum class ScreenRoute {
     Shapes,
     Mathematic,
     Helicopter,
-    Mathematic,
     Numbers
 }
 

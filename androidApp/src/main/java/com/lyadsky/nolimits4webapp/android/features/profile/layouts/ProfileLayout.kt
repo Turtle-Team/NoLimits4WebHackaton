@@ -89,7 +89,7 @@ fun ProfileLayout(
             modifier = Modifier.padding(top = 12.dp)
         ) {
             Text(
-                text = "Егор", style = TextStyle(
+                text = viewModelWrapper.viewModel.getUser().name, style = TextStyle(
                     fontSize = 16.sp,
                     fontWeight = FontWeight(700),
                     color = Color(0xFF474992)

@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -18,11 +19,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.zIndex
 import com.lyadsky.nolimits4webapp.android.LocalColors
 import com.lyadsky.nolimits4webapp.android.R
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
 import com.lyadsky.nolimits4webapp.android.features.views.buttons.CommonButton
+import com.lyadsky.nolimits4webapp.common.user_data.User
 import com.lyadsky.nolimits4webapp.common.user_data.UserDataManager
 import com.lyadsky.nolimits4webapp.features.register.viewModel.RegisterViewModel
 import org.koin.androidx.compose.get
@@ -34,6 +35,8 @@ fun HobbiesScreen(
 ) {
 
     val isHorizontal = LocalConfiguration.current.orientation == 2
+
+    val state = viewModelWrapper.viewModel.state.collectAsState()
 
     Column(
         modifier = Modifier
@@ -51,12 +54,12 @@ fun HobbiesScreen(
 
         LazyVerticalGrid(
             columns = GridCells.Fixed(if (isHorizontal) 4 else 2),
-            contentPadding = PaddingValues(bottom = 40.dp,start = 16.dp, end = 16.dp),
+            contentPadding = PaddingValues(bottom = 40.dp, start = 16.dp, end = 16.dp),
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
 
-        ) {
+            ) {
             //TODO
             items(count = 20) {
                 GridItems()
@@ -64,13 +67,16 @@ fun HobbiesScreen(
 
             item(span = { GridItemSpan(if (isHorizontal) 4 else 2) }) {
                 CommonButton(text = "Создать") {
-                    userData.saveAuthData("zaglushka vremennaya")
+                    userData.saveAuthData(
+                        User(
+                            state.value.name,
+                            state.value.age,
+                            state.value.isMale ?: true
+                        )
+                    )
                     viewModelWrapper.viewModel.onNextClick()
                 }
             }
-        }
-        CommonButton(text = "Создать") {
-            viewModelWrapper.viewModel.onNextClick()
         }
     }
 }

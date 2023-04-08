@@ -1,19 +1,16 @@
 package com.lyadsky.nolimits4webapp.features.main.viewModel
 
 import com.lyadsky.nolimits4webapp.common.navigation.Navigator
-import com.lyadsky.nolimits4webapp.common.viewModel.KmpViewModel
-import com.lyadsky.nolimits4webapp.common.viewModel.KmpViewModelImpl
-import com.lyadsky.nolimits4webapp.common.navigation.Navigator
 import com.lyadsky.nolimits4webapp.common.viewModel.KmpViewModelImpl
 import com.lyadsky.nolimits4webapp.common.viewModel.StatefulKmpViewModel
 import com.lyadsky.nolimits4webapp.common.viewModel.SubScreenViewModel
 import com.lyadsky.nolimits4webapp.features.main.state.MainState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import org.koin.core.component.KoinComponent
 import kotlinx.coroutines.flow.asStateFlow
+import org.koin.core.component.KoinComponent
 
-interface MainViewModel : KmpViewModel, SubScreenViewModel {
+interface MainViewModel : StatefulKmpViewModel<MainState>, SubScreenViewModel {
     fun onAlphabetClick()
     fun onLogicClick()
     fun onShapeClick()
