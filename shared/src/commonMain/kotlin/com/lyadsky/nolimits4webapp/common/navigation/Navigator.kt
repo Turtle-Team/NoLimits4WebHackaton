@@ -11,7 +11,8 @@ enum class ScreenRoute {
     Settings,
     Alphabet,
     Logic,
-    Shapes
+    Shapes,
+    Mathematic
 }
 
 interface Navigator {
@@ -26,4 +27,5 @@ interface Navigator {
     fun navigateToAlphabet()
     fun navigateToLogic()
     fun navigateToShapes()
+    fun navigateToMathematic()
 }

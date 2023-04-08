@@ -56,6 +56,10 @@ class NavigatorImpl(
         navigateToNavBarDestination(ScreenRoute.Shapes)
     }
 
+    override fun navigateToMathematic() {
+        navigateToNavBarDestination(ScreenRoute.Mathematic)
+    }
+
     private fun navigateToNavBarDestination(root: ScreenRoute, clearBackStack: Boolean = false) {
         navController?.navigate(root.name) {
             if (clearBackStack)
