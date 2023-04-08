@@ -45,6 +45,7 @@ fun CatalogLayout(
 
         val chapterList = listOf(
             Chapter(R.drawable.ic_alphabet, "Алфавит"),
+            Chapter(R.drawable.ic_logic, "Логика"),
             Chapter(R.drawable.ic_numbers, "Цифры"),
             Chapter(R.drawable.ic_forms, "Формы"),
             Chapter(R.drawable.ic_matematic, "Математика"),
@@ -91,6 +92,7 @@ fun ChapterItem(
         onClick = {
             when (chapter.title) {
                 "Алфавит" -> viewModelWrapper.viewModel.onAlphabetClick()
+                "Логика" -> viewModelWrapper.viewModel.onLogicClick()
             }
         }
     ) {

@@ -18,6 +18,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import com.lyadsky.nolimits4webapp.android.LocalColors
 import com.lyadsky.nolimits4webapp.android.R
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
@@ -47,12 +48,14 @@ fun HobbiesScreen(
             fontWeight = FontWeight(700),
             color = LocalColors.current.color6
         )
+
         LazyVerticalGrid(
             columns = GridCells.Fixed(if (isHorizontal) 4 else 2),
             contentPadding = PaddingValues(bottom = 40.dp,start = 16.dp, end = 16.dp),
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+
         ) {
             //TODO
             items(count = 20) {
@@ -65,6 +68,9 @@ fun HobbiesScreen(
                     viewModelWrapper.viewModel.onNextClick()
                 }
             }
+        }
+        CommonButton(text = "Создать") {
+            viewModelWrapper.viewModel.onNextClick()
         }
     }
 }
