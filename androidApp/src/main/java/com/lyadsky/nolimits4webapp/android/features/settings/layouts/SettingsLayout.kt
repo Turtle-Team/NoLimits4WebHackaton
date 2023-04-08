@@ -49,13 +49,13 @@ fun SettingsLayout(
                 )
 
                 Spacer(modifier = Modifier.padding(top = 54.dp))
-                CommonEditText(title = "Имя пользователя", sizeText = 16)
+                CommonEditText(title = "Имя пользователя"){}
 
                 Spacer(modifier = Modifier.padding(top = 30.dp))
-                CommonEditText(title = "Электронная почта", sizeText = 16)
+                CommonEditText(title = "Электронная почта"){}
 
                 Spacer(modifier = Modifier.padding(top = 30.dp))
-                CommonEditText(title = "Пароль", sizeText = 16)
+                CommonEditText(title = "Пароль"){}
 
                 Column(
                     Modifier

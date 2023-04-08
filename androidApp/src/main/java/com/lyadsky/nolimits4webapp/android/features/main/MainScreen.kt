@@ -7,15 +7,11 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.lyadsky.nolimits4webapp.android.features.main.layouts.MainList
 
- //TODO ViewModel
+//TODO ViewModel
 
 @Composable
 fun MainScreen() {
-    Column(
-        Modifier
-            .fillMaxSize()
-            .background(Color.White)) {
-        Text(text = "main")
-    }
+    MainList()
 }
