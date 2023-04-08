@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -178,10 +179,12 @@ fun CategoryItem() {
 
 @Composable
 fun FinishedItem(title: String, description: String, progress: Int, isFinished: Boolean) {
-    Column(
+    Card(
         Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = 16.dp),
+        elevation = 2.dp,
+        shape = RoundedCornerShape(15.dp)
     ) {
         Row(
             modifier = Modifier
