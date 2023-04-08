@@ -7,7 +7,8 @@ enum class ScreenRoute {
     Auth,
     Register,
     InfoUser,
-    Catalog
+    Catalog,
+    Settings
 }
 
 interface Navigator {
@@ -19,4 +20,5 @@ interface Navigator {
     fun navigateToProfile()
     fun navigateToInfoUser()
     fun navigateToCatalog()
+    fun navigateToSettings()
 }

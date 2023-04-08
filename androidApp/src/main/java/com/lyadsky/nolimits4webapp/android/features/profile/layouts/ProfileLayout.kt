@@ -3,6 +3,7 @@ package com.lyadsky.nolimits4webapp.android.features.profile.layouts
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -23,9 +24,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lyadsky.nolimits4webapp.android.R
+import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
+import com.lyadsky.nolimits4webapp.features.profile.viewModel.ProfileViewModel
+import com.lyadsky.nolimits4webapp.features.register.viewModel.RegisterViewModel
+import org.koin.androidx.compose.getViewModel
+import org.koin.core.qualifier.named
 
 @Composable
-fun ProfileLayout() {
+fun ProfileLayout(
+    viewModelWrapper: ViewModelWrapper<ProfileViewModel> =
+        getViewModel(named("ProfileViewModel"))
+) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier
             .clip(RoundedCornerShape(15.dp))
@@ -40,7 +49,8 @@ fun ProfileLayout() {
             Icon(
                 painter = painterResource(id = R.drawable.ic_settings), contentDescription = "",
                 modifier = Modifier
-                    .size(25.dp),
+                    .size(25.dp)
+                    .clickable { viewModelWrapper.viewModel.onSettingsClick() },
                 tint = Color(0xFF474992)
             )
 

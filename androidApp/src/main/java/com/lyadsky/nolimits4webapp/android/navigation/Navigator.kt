@@ -44,6 +44,10 @@ class NavigatorImpl(
         navigateToNavBarDestination(ScreenRoute.Catalog)
     }
 
+    override fun navigateToSettings() {
+        navigateToNavBarDestination(ScreenRoute.Settings)
+    }
+
 
     private fun navigateToNavBarDestination(root: ScreenRoute) {
         navController?.navigate(root.name) {

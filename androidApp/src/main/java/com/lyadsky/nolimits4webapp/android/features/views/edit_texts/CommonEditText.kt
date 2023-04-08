@@ -14,17 +14,18 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun CommonEditText(title: String, placeholder: String? = title, isCenterText: Boolean? = false) {
+fun CommonEditText(title: String, placeholder: String? = title, isCenterText: Boolean? = false, sizeText: Int? = 24) {
     var text by remember { mutableStateOf(TextFieldValue("")) }
 
     Column {
         Text(
             text = title, style = TextStyle(
-                fontSize = 24.sp,
+                fontSize = sizeText!!.sp,
                 fontWeight = FontWeight(700),
                 color = Color(0xFF474992)
             ),
