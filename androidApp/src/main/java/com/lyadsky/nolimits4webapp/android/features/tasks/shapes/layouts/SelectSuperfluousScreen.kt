@@ -100,7 +100,7 @@ fun SelectSuperfluousGridItems(imageId: Int, viewModelWrapper: ViewModelWrapper<
             .clickable {
                 if (imageId == R.drawable.ic_star) {
                     color = Color.Green
-                    viewModelWrapper.viewModel.onNextClick()
+                    viewModelWrapper.viewModel.onFinishTask()
                 }else {
                     color =  Color.Red
                 }

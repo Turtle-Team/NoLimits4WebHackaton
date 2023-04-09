@@ -62,7 +62,7 @@ fun ThreePrimerScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
             contentPadding = PaddingValues(bottom = 50.dp, start = 16.dp, end = 16.dp),
             modifier = Modifier
                 .weight(1F)
-                .padding(top = 50.dp),
+                .padding(top = 30.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
 
@@ -76,7 +76,7 @@ fun ThreePrimerScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
             Image(
                 painter = painterResource(id = R.drawable.ic_sound), contentDescription = "",
                 modifier = Modifier
-                    .padding(bottom = 40.dp, top = 10.dp)
+                    .padding(bottom = 10.dp, top = 10.dp)
                     .clickable {
                         playAudio(context, R.raw.select_true_answer)
                     }
@@ -106,7 +106,7 @@ fun ThreePrimerGridItems(intId: Int, viewModelWrapper: ViewModelWrapper<TaskView
             .clickable {
                 if (intId == 4) {
                     color = Color.Green
-                    viewModelWrapper.viewModel.onNextClick()
+                    viewModelWrapper.viewModel.onFinishTask()
                 } else {
                     color = Color.Red
                 }

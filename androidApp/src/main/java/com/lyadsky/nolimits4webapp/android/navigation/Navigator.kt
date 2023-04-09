@@ -64,6 +64,14 @@ class NavigatorImpl(
         navigateToNavBarDestination(ScreenRoute.Numbers)
     }
 
+    override fun navigateToColors() {
+        navigateToNavBarDestination(ScreenRoute.Colors)
+    }
+
+    override fun navigateToFinishTask() {
+        navigateToNavBarDestination(ScreenRoute.FinishTask)
+    }
+
     private fun navigateToNavBarDestination(root: ScreenRoute, clearBackStack: Boolean = false) {
         navController?.navigate(root.name) {
             if (clearBackStack)

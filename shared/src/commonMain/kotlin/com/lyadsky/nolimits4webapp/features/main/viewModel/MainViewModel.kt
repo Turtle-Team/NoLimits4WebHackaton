@@ -15,6 +15,7 @@ interface MainViewModel : KmpViewModel, SubScreenViewModel {
     fun onShapeClick()
     fun onMathematicClick()
     fun onNumberClick()
+    fun onColorClick()
 }
 
 class MainViewModelImpl(
@@ -39,6 +40,10 @@ class MainViewModelImpl(
 
     override fun onNumberClick() {
         navigator.navigateToNumbers()
+    }
+
+    override fun onColorClick() {
+        navigator.navigateToColors()
     }
 }
 

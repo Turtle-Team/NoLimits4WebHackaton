@@ -53,7 +53,6 @@ fun HobbiesScreen(
         Chapter(R.drawable.ic_forms, "Формы"),
         Chapter(R.drawable.ic_matematic, "Математика"),
         Chapter(R.drawable.ic_colors, "Цвета"),
-        Chapter(R.drawable.ic_english, "Английский"),
     )
 
     Column(

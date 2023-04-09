@@ -83,12 +83,12 @@ fun OnePrimerScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
         Row(horizontalArrangement = Arrangement.Center) {
             Image(
                 painter = painterResource(id = R.drawable.ic_sound), contentDescription = "",
-                modifier = Modifier.padding(bottom = 40.dp)
+                modifier = Modifier.padding(bottom = 10.dp)
             )
 
             Image(
                 painter = painterResource(id = R.drawable.ic_micro), contentDescription = "",
-                modifier = Modifier.padding(bottom = 40.dp, start = 174.dp)
+                modifier = Modifier.padding(bottom = 10.dp, start = 174.dp)
             )
         }
     }
