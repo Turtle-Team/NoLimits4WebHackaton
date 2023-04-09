@@ -2,6 +2,7 @@ package com.lyadsky.nolimits4webapp.data
 
 import com.lyadsky.database.AppDatabase
 import com.lyadsky.database.Tasks
+import com.lyadsky.nolimits4webapp.common.user_data.User
 import com.squareup.sqldelight.runtime.coroutines.asFlow
 import com.squareup.sqldelight.runtime.coroutines.mapToOneOrNull
 import kotlinx.coroutines.flow.Flow
@@ -14,13 +15,20 @@ interface AppDatabaseRepostitory {
     suspend fun getStats(): TaskStats
 
     suspend fun saveStats(stats: TaskStats)
+
+    fun getUser(): User?
+
+    suspend fun saveUser(user: User)
+
+    suspend fun addLevel()
 }
 
 internal class AppDatabaseRepostitoryImpl(database: AppDatabase) : AppDatabaseRepostitory {
 
     private val queries = database.appDatabaseQueries
 
-    override fun getStatsAsFlow(): Flow<TaskStats?> = queries.getAllStats().asFlow().mapToOneOrNull().mapNotNull { it?.toInt() }
+    override fun getStatsAsFlow(): Flow<TaskStats?> =
+        queries.getAllStats().asFlow().mapToOneOrNull().mapNotNull { it?.toInt() }
 
     override suspend fun getStats(): TaskStats = try {
         queries.getAllStats().executeAsOne().toInt()
@@ -42,6 +50,37 @@ internal class AppDatabaseRepostitoryImpl(database: AppDatabase) : AppDatabaseRe
         )
     }
 
+    override fun getUser(): User? {
+        return try {
+            val data = queries.getUser().executeAsOneOrNull()
+            val isMale = data?.isMale == (1 ?: true)
+
+            User(
+                data?.name ?: "",
+                data?.age?.toInt() ?: 0,
+                isMale,
+                data?.level?.toInt() ?: 0,
+            )
+        } catch (e: Throwable) {
+            User("", 0, true, 0)
+        }
+    }
+
+    override suspend fun saveUser(user: User) {
+        queries.saveUser(
+            user.name,
+            user.age.toLong(),
+            if (user.isMale) 1 else 0,
+            user.level.toLong()
+        )
+    }
+
+    override suspend fun addLevel() {
+        runCatching {
+            val data = getUser()
+            saveUser(data!!.copy(level = data.level + 1))
+        }
+    }
 }
 
 data class TaskStats(

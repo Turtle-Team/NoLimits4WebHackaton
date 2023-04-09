@@ -67,6 +67,6 @@ fun androidModule() = module {
     }
 
     viewModel(named("FinishViewModel")) {
-        ViewModelWrapper<FinishViewModel>(FinishViewModelImpl(get()))
+        ViewModelWrapper<FinishViewModel>(FinishViewModelImpl(get(), get()))
     }
 }

@@ -40,11 +40,10 @@ fun ShapesScreen(
             .background(LocalColors.current.background),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        StageBar(Modifier.padding(top = 50.dp),number = state.value.stage, 3)
+        StageBar(Modifier.padding(top = 50.dp),number = state.value.stage, 2)
         when (state.value.stage) {
             1 -> AppleFormScreen(viewModelWrapper)
-            2 -> PredmetConturScreen(viewModelWrapper)
-            3 -> SelectSuperfluousScreen(viewModelWrapper)
+            2 -> SelectSuperfluousScreen(viewModelWrapper)
             else -> {}
         }
     }

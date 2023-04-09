@@ -8,7 +8,7 @@ data class User(
     val name: String,
     val age: Int,
     val isMale: Boolean,
-//    val interesting: List<String>
+    val level: Int
 )
 
 expect interface NativeUserData

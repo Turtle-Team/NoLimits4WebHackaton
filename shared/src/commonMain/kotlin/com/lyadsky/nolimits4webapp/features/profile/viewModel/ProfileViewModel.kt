@@ -8,9 +8,8 @@ import com.lyadsky.nolimits4webapp.common.viewModel.StatefulKmpViewModel
 import com.lyadsky.nolimits4webapp.common.viewModel.SubScreenViewModel
 import com.lyadsky.nolimits4webapp.data.AppDatabaseRepostitory
 import com.lyadsky.nolimits4webapp.data.TaskStats
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.stateIn
+import com.lyadsky.nolimits4webapp.features.tasks.state.TaskState
+import kotlinx.coroutines.flow.*
 import org.koin.core.component.KoinComponent
 
 interface ProfileViewModel : StatefulKmpViewModel<TaskStats?>, SubScreenViewModel {
@@ -22,18 +21,19 @@ interface ProfileViewModel : StatefulKmpViewModel<TaskStats?>, SubScreenViewMode
 class ProfileViewModelImpl(
     override val navigator: Navigator,
     private val userDataManager: UserDataManager,
-    dao: AppDatabaseRepostitory
+    private val dao: AppDatabaseRepostitory
 ) : KoinComponent, KmpViewModelImpl(), ProfileViewModel {
 
 
-    override val state: StateFlow<TaskStats?> = dao.getStatsAsFlow().stateIn(scope, SharingStarted.Lazily, TaskStats.empty())
+    private val _state = MutableStateFlow(TaskStats.empty())
+    override val state: StateFlow<TaskStats?> =  _state.asStateFlow() /*dao.getStatsAsFlow().stateIn(scope, SharingStarted.Lazily, TaskStats.empty())*/
 
 
     override fun onSettingsClick() {
         navigator.navigateToSettings()
     }
 
-    override fun getUser(): User = userDataManager.getUserData()
+    override fun getUser(): User = dao.getUser() ?: User("",0,true, 0)
 
 }
 

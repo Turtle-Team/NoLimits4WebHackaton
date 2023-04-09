@@ -1,15 +1,18 @@
 package com.lyadsky.nolimits4webapp.features.register.viewModel
 
 import com.lyadsky.nolimits4webapp.common.navigation.Navigator
+import com.lyadsky.nolimits4webapp.common.user_data.User
 import com.lyadsky.nolimits4webapp.common.user_data.UserDataManager
 import com.lyadsky.nolimits4webapp.common.viewModel.KmpViewModel
 import com.lyadsky.nolimits4webapp.common.viewModel.KmpViewModelImpl
 import com.lyadsky.nolimits4webapp.common.viewModel.SubScreenViewModel
+import com.lyadsky.nolimits4webapp.data.AppDatabaseRepostitory
 import com.lyadsky.nolimits4webapp.features.register.state.RegisterState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 
 interface RegisterViewModel : KmpViewModel, SubScreenViewModel {
@@ -35,7 +38,7 @@ interface RegisterViewModel : KmpViewModel, SubScreenViewModel {
 
 class RegisterViewModelImpl(
     override val navigator: Navigator,
-    private val userDataManager: UserDataManager
+    private val userDataManager: AppDatabaseRepostitory
 ) : KoinComponent, KmpViewModelImpl(), RegisterViewModel {
     private val _state = MutableStateFlow(RegisterState())
     override val state: StateFlow<RegisterState> = _state.asStateFlow()
@@ -43,9 +46,13 @@ class RegisterViewModelImpl(
     override fun onNextClick() {
         if (_state.value.stage < 3) {
             _state.update { it.copy(stage = _state.value.stage + 1) }
-
         }
         else {
+            scope.launch {
+                _state.value.apply {
+                    userDataManager.saveUser(User(name,age,isMale?: true, 0))
+                }
+            }
             navigator.register()
         }
     }
