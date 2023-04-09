@@ -101,7 +101,7 @@ fun ProfileLayout(
                 )
             )
             Text(
-                text = "1 уровень", style = TextStyle(
+                text = "${viewModelWrapper.viewModel.getUser().level} уровень", style = TextStyle(
                     fontSize = 16.sp,
                     fontWeight = FontWeight(700),
                     color = Color(0xFF474992)

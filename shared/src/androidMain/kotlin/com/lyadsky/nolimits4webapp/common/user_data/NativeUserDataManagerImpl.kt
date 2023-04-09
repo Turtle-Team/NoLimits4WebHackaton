@@ -28,7 +28,7 @@ actual class NativeUserDataManagerImpl(private val context: Context) : KoinCompo
         return try {
             json.decodeFromString<User>(User.serializer(), encodedData ?: def_val)
         } catch (e: Throwable) {
-            User("",0,true)
+            User("",0,true, 0)
         }
 
     }

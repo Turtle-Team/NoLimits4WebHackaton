@@ -28,16 +28,18 @@ SELECT * FROM Tasks;
 CREATE TABLE UserData (
     name TEXT NOT NULL,
     age INTEGER NOT NULL,
-    isMale INTEGER NOT NULL
+    isMale INTEGER NOT NULL,
+    level INTEGER NOT NULL
 );
 
 saveUser:
 INSERT OR REPLACE INTO UserData (
     name,
     age,
-    isMale
+    isMale,
+    level
 )
-VALUES(?,?,?);
+VALUES(?,?,?,?);
 
 getUser:
 SELECT * FROM UserData;

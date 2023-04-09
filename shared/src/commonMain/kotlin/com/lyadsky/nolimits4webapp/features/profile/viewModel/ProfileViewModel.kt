@@ -33,7 +33,7 @@ class ProfileViewModelImpl(
         navigator.navigateToSettings()
     }
 
-    override fun getUser(): User = dao.getUser() ?: User("",0,true)
+    override fun getUser(): User = dao.getUser() ?: User("",0,true, 0)
 
 }
 

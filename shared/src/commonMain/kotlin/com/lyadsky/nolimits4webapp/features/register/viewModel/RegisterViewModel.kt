@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 
 interface RegisterViewModel : KmpViewModel, SubScreenViewModel {
@@ -47,8 +48,10 @@ class RegisterViewModelImpl(
             _state.update { it.copy(stage = _state.value.stage + 1) }
         }
         else {
-            _state.value.apply {
-                userDataManager.saveUser(User(name,age,isMale?: true))
+            scope.launch {
+                _state.value.apply {
+                    userDataManager.saveUser(User(name,age,isMale?: true, 0))
+                }
             }
             navigator.register()
         }

@@ -18,7 +18,9 @@ interface AppDatabaseRepostitory {
 
     fun getUser(): User?
 
-    fun saveUser(user: User)
+    suspend fun saveUser(user: User)
+
+    suspend fun addLevel()
 }
 
 internal class AppDatabaseRepostitoryImpl(database: AppDatabase) : AppDatabaseRepostitory {
@@ -49,22 +51,35 @@ internal class AppDatabaseRepostitoryImpl(database: AppDatabase) : AppDatabaseRe
     }
 
     override fun getUser(): User? {
-        val data = queries.getUser().executeAsOneOrNull()
-        val isMale = data?.isMale == (1 ?: true)
+        return try {
+            val data = queries.getUser().executeAsOneOrNull()
+            val isMale = data?.isMale == (1 ?: true)
 
-        return User(
-            data?.name ?: "",
-            data?.age?.toInt() ?: 0,
-            isMale
-        )
+            User(
+                data?.name ?: "",
+                data?.age?.toInt() ?: 0,
+                isMale,
+                data?.level?.toInt() ?: 0,
+            )
+        } catch (e: Throwable) {
+            User("", 0, true, 0)
+        }
     }
 
-    override fun saveUser(user: User) {
+    override suspend fun saveUser(user: User) {
         queries.saveUser(
             user.name,
             user.age.toLong(),
-            if (user.isMale) 1 else 0
+            if (user.isMale) 1 else 0,
+            user.level.toLong()
         )
+    }
+
+    override suspend fun addLevel() {
+        runCatching {
+            val data = getUser()
+            saveUser(data!!.copy(level = data.level + 1))
+        }
     }
 }
 
