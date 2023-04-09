@@ -69,7 +69,7 @@ fun Color2TaskScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
             Image(
                 painter = painterResource(id = R.drawable.ic_sound), contentDescription = "",
                 modifier = Modifier.padding(bottom = 70.dp).clickable {
-                    playAudio(context, R.raw.select_lishnie)
+                    playAudio(context, R.raw.select_true_answer)
                 }
             )
         }

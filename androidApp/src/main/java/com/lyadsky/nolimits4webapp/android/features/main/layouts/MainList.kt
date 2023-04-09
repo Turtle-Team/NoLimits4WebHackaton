@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import com.lyadsky.nolimits4webapp.android.LocalColors
 import com.lyadsky.nolimits4webapp.android.R.drawable
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
+import com.lyadsky.nolimits4webapp.android.features.profile.layouts.TaskData
 import com.lyadsky.nolimits4webapp.android.font
 import com.lyadsky.nolimits4webapp.features.catalog.viewModel.CatalogViewModel
 import com.lyadsky.nolimits4webapp.features.main.viewModel.MainViewModel
@@ -77,7 +78,7 @@ fun MainList(viewModelWrapper: ViewModelWrapper<MainViewModel> =
                         .padding(top = 13.dp)
                 ) {
                     Text(
-                        text = "Английский",
+                        text = "Математика",
                         fontSize = 20.sp,
                         fontWeight = FontWeight(700),
                         maxLines = 1,
@@ -85,7 +86,7 @@ fun MainList(viewModelWrapper: ViewModelWrapper<MainViewModel> =
                         color = LocalColors.current.color6
                     )
                     Text(
-                        text = "Повторение слов",
+                        text = "Изучаем математику",
                         fontSize = 14.sp,
                         fontWeight = FontWeight(700),
                         color = Color(0xFFD9D9D9)
@@ -99,31 +100,25 @@ fun MainList(viewModelWrapper: ViewModelWrapper<MainViewModel> =
                     horizontalAlignment =
                     Alignment.End, verticalArrangement = Arrangement.SpaceBetween
                 ) {
-
-                    Text(
-                        text = "50%",
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight(700),
-                        color = LocalColors.current.color6
-                    )
-
                     Box(
                         modifier = Modifier
                             .size(57.dp)
                             .border(1.dp, Color(0xFFD9D9D9), CircleShape),
                         contentAlignment = Alignment.Center
                     ) {
-                        Icon(
-                            modifier = Modifier.padding(start = 1.dp),
-                            painter = painterResource(id = drawable.ic_play),
-                            contentDescription = "",
-                            tint = LocalColors.current.color5
-                        )
+                        IconButton(onClick = { viewModelWrapper.viewModel.onMathematicClick() }) {
+                            Icon(
+                                modifier = Modifier.padding(start = 1.dp),
+                                painter = painterResource(id = drawable.ic_play),
+                                contentDescription = "",
+                                tint = LocalColors.current.color5
+                            )
+                        }
+
                     }
                 }
             }
         }
-
         item {
             Text(
                 modifier = Modifier.padding(top = 35.dp),

@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import com.lyadsky.nolimits4webapp.android.LocalColors
 import com.lyadsky.nolimits4webapp.android.R
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
+import com.lyadsky.nolimits4webapp.android.features.profile.layouts.TaskData
 import com.lyadsky.nolimits4webapp.android.features.views.buttons.CommonButton
 import com.lyadsky.nolimits4webapp.android.utils.playAudio
 import com.lyadsky.nolimits4webapp.features.tasks.viewModel.TaskViewModel
@@ -39,7 +40,7 @@ fun OnePrimerScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Нарисуй нужное число в поле внизу или скажи ответ в микрофон",
+            text = "Скажи в микрофон какое число должно быть в поле",
             fontSize = 24.sp,
             fontWeight = FontWeight(700),
             color = LocalColors.current.color6,
@@ -58,7 +59,6 @@ fun OnePrimerScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
                 }
             }
         }
-        val context = LocalContext.current
         LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
 
             item {

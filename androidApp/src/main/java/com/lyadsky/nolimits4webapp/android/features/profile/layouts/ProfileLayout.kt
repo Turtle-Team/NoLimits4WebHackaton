@@ -124,13 +124,11 @@ data class TaskData(
 @Composable
 fun CategoryItem(value: TaskStats) {
     val taskFinished = listOf<TaskData>(
-        TaskData("Алфавит", "Изучение алфавита", value.alphabet, 0),
-        TaskData("Математика", "Изучение алфавита", value.mathematics, 3),
-        TaskData("Логика", "Изучение алфавита", value.logic, 3),
-        TaskData("Цифры", "Изучение алфавита", value.numbers, 3),
-        TaskData("Формы", "Изучение алфавита", value.figures, 3),
-        TaskData("Цвета", "Изучение алфавита", value.colors, 3),
-        TaskData("Английский", "Изучение алфавита", value.english, 0),
+        TaskData("Математика", "Изучение математики", value.mathematics, 0),
+        TaskData("Логика", "Интресные задачи", value.logic, 1),
+        TaskData("Цифры", "Учимся считать", value.numbers, 1),
+        TaskData("Формы", "Изучение фигур и форм", value.figures, 1),
+        TaskData("Цвета", "Учимся отличать цвета", value.colors, 0),
     )
 
     LazyColumn {
@@ -221,13 +219,6 @@ fun FinishedItem(title: String, description: String, progress: Int, isFinished: 
                             fontWeight = FontWeight(700),
                             color = Color(0xFF474992)
                         ),
-                    )
-                    Text(
-                        text = "$progress%", style = TextStyle(
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight(700),
-                            color = Color(0xFF474992)
-                        )
                     )
                 }
                 Text(
