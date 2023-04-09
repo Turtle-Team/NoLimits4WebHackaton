@@ -18,6 +18,7 @@ interface MainViewModel : StatefulKmpViewModel<MainState>, SubScreenViewModel {
     fun onMathematicClick()
     fun onNumberClick()
     fun navigateToHelicGame()
+    fun onColorClick()
 }
 
 class MainViewModelImpl(

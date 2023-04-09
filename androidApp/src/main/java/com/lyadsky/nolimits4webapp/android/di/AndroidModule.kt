@@ -5,6 +5,10 @@ import com.lyadsky.nolimits4webapp.android.navigation.NavigatorImpl
 import com.lyadsky.nolimits4webapp.common.navigation.Navigator
 import com.lyadsky.nolimits4webapp.features.catalog.viewModel.CatalogViewModel
 import com.lyadsky.nolimits4webapp.features.catalog.viewModel.CatalogViewModelImpl
+import com.lyadsky.nolimits4webapp.features.finish.viewModel.FinishViewModel
+import com.lyadsky.nolimits4webapp.features.finish.viewModel.FinishViewModelImpl
+import com.lyadsky.nolimits4webapp.features.helicopterMinigame.HelicopterMinigameViewModel
+import com.lyadsky.nolimits4webapp.features.helicopterMinigame.HelicopterMinigameViewModelImpl
 import com.lyadsky.nolimits4webapp.features.main.viewModel.MainViewModel
 import com.lyadsky.nolimits4webapp.features.main.viewModel.MainViewModelImpl
 import com.lyadsky.nolimits4webapp.features.mainNavigation.viewModel.MainNavigationViewModelImpl
@@ -59,7 +63,7 @@ fun androidModule() = module {
     }
 
     viewModel(named("TaskViewModel")) {
-        ViewModelWrapper<TaskViewModel>(TaskViewModelImpl(get()))
+        ViewModelWrapper<TaskViewModel>(TaskViewModelImpl(get(),get()))
     }
 
     viewModel(named("FinishViewModel")) {
