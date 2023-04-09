@@ -1,4 +1,4 @@
-package com.lyadsky.nolimits4webapp.android.features.tasks.mathematic.layouts
+package com.lyadsky.nolimits4webapp.android.features.tasks.shapes.layouts
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
@@ -6,9 +6,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -28,12 +30,7 @@ import com.lyadsky.nolimits4webapp.android.utils.playAudio
 import com.lyadsky.nolimits4webapp.features.tasks.viewModel.TaskViewModel
 
 @Composable
-fun ThreePrimerScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
-
-    val numbers = listOf(
-        7, 5, 4, 2
-    )
-
+fun PredmetConturScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -41,34 +38,34 @@ fun ThreePrimerScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
+
         Text(
-            text = "Выбери число которое должно стоять на пропущенном месте",
+            text = "Совмести предмет с его контуром",
             fontSize = 24.sp,
             fontWeight = FontWeight(700),
             color = LocalColors.current.color6,
-            modifier = Modifier.padding(horizontal = 16.dp)
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp)
         )
-
-        Text(
-            text = "2 ... 6 ... 10 ",
-            fontSize = 48.sp,
-            fontWeight = FontWeight(700),
-            color = LocalColors.current.color6,
-            modifier = Modifier.padding(top = 103.dp)
+        val figuresList = listOf(
+            R.drawable.ic_elka,
+            R.drawable.ic_home_game,
+            R.drawable.ic_beach_bolls,
+            R.drawable.ic_circle,
+            R.drawable.ic_triangle,
+            R.drawable.ic_triangle_purple
         )
 
         LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            contentPadding = PaddingValues(bottom = 50.dp, start = 16.dp, end = 16.dp),
             modifier = Modifier
                 .weight(1F)
-                .padding(top = 50.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-
-            ) {
-            items(items = numbers) { item ->
-                ThreePrimerGridItems(item, viewModelWrapper)
+                .padding(top = 76.dp),
+            columns = GridCells.Fixed(3)
+        ) {
+            items(items = figuresList) { item ->
+                Column(Modifier.padding(horizontal = 10.dp )) {
+                    PredmetConturGridItems(imageId = item, viewModelWrapper = viewModelWrapper)
+                }
             }
         }
         val context = LocalContext.current
@@ -76,20 +73,37 @@ fun ThreePrimerScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
             Image(
                 painter = painterResource(id = R.drawable.ic_sound), contentDescription = "",
                 modifier = Modifier
-                    .padding(bottom = 40.dp, top = 10.dp)
+                    .padding(bottom = 40.dp)
                     .clickable {
-                        playAudio(context, R.raw.select_true_answer)
+                        playAudio(context, R.raw.form)
                     }
             )
         }
     }
 }
 
-
 @SuppressLint("UnrememberedMutableState")
 @Composable
-fun ThreePrimerGridItems(intId: Int, viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
+fun PredmetConturGridItems(imageId: Int, viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
     var color by remember { mutableStateOf(Color.White) }
+    var test1 by remember {
+        mutableStateOf(false)
+    }
+    var test2 by remember {
+        mutableStateOf(false)
+    }
+    var test3 by remember {
+        mutableStateOf(false)
+    }
+    var test4 by remember {
+        mutableStateOf(false)
+    }
+    var test5 by remember {
+        mutableStateOf(false)
+    }
+    var test6 by remember {
+        mutableStateOf(false)
+    }
     Column(
         modifier = Modifier
             .size(
@@ -104,21 +118,35 @@ fun ThreePrimerGridItems(intId: Int, viewModelWrapper: ViewModelWrapper<TaskView
                 shape = RoundedCornerShape(15.dp)
             )
             .clickable {
-                if (intId == 4) {
-                    color = Color.Green
-                    viewModelWrapper.viewModel.onNextClick()
-                } else {
-                    color = Color.Red
-                }
+
+//                if (imageId == R.drawable.ic_circle) {
+//                    test1 = true
+//                    color = Color.Green
+//
+//                }
+//
+//                if (imageId == R.drawable.ic_beach_bolls) {
+//                    if (test){
+//                        color = Color.Green
+//                    }
+//                }
+//
+//
+//                if (imageId == R.drawable.ic_circle) {
+//
+////                    viewModelWrapper.viewModel.onNextClick()
+//                } else {
+//                    color = Color.Red
+//                }
             },
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(
-            text = intId.toString(),
-            fontSize = 48.sp,
-            fontWeight = FontWeight(700),
-            color = LocalColors.current.color6
+        Image(
+            modifier = Modifier.size(126.dp),
+            painter = painterResource(id = imageId),
+            contentDescription = "",
+            alignment = Alignment.Center
         )
     }
 }

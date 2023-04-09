@@ -42,7 +42,8 @@ fun AppleFormScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
             text = "На какую форму похож этот предмет?",
             fontSize = 24.sp,
             fontWeight = FontWeight(700),
-            color = LocalColors.current.color6
+            color = LocalColors.current.color6,
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp)
         )
         val figuresList = listOf(
             R.drawable.ic_circle,
