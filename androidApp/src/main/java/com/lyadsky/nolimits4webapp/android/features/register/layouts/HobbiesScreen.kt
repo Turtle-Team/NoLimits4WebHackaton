@@ -82,6 +82,11 @@ fun HobbiesScreen(
                     LikeChapterItem(chapter = item)
                 }
             }
+            item {
+                CommonButton(text = "Создать") {
+                    viewModelWrapper.viewModel.onNextClick()
+                }
+            }
         }
     }
 }

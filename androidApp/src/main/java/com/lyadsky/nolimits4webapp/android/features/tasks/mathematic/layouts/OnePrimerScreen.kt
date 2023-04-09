@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.speech.RecognizerIntent
 import android.speech.tts.TextToSpeech
+import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -43,15 +44,17 @@ fun OnePrimerScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
             color = LocalColors.current.color6,
             modifier = Modifier.padding(horizontal = 16.dp)
         )
-
+        val context = LocalContext.current
         val startLauncher = rememberLauncherForActivityResult(
             contract = ActivityResultContracts.StartActivityForResult()
         ) {
             if (it.resultCode == Activity.RESULT_OK) {
                 val result = it.data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
-                viewModelWrapper.viewModel.onNextClick(
-                    result?.get(0).toString() == "5" || result?.get(0).toString() == "пять"
-                )
+                if (result?.get(0).toString() == "5" || result?.get(0).toString() == "пять"){
+                    viewModelWrapper.viewModel.onNextClick()
+                } else {
+                    Toast.makeText(context, "Не верно", Toast.LENGTH_SHORT).show()
+                }
             }
         }
         LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
