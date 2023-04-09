@@ -93,6 +93,7 @@ class HelicopterMinigameViewModelImpl(
                     firstExp = getExpressionWith(stat.record),
                     secondExp = getExpressionWith(stat.record),
                     thirdExp = getExpressionWith(stat.record),
+                    score = if (stat.score>0){ stat.score - 1 } else{stat.score}
                 )
             }
             _state.update { it.copy(

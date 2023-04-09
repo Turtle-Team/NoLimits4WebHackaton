@@ -41,76 +41,7 @@ fun ProfileLayout(
         horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier
             .clip(RoundedCornerShape(15.dp))
     ) {
-        Row(
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.Top,
-            modifier = Modifier
-                .padding(start = 25.dp, end = 25.dp, top = 50.dp)
-                .fillMaxWidth()
-        ) {
-
-            IconButton(
-                onClick = { viewModelWrapper.viewModel.onSettingsClick() },
-                modifier = Modifier
-                    .size(25.dp),
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_settings), contentDescription = "",
-                    tint = Color(0xFF474992)
-                )
-            }
-            IconButton(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(75.dp)
-                    .border(width = 2.dp, color = Color(0xFFC7C7C7), shape = CircleShape)
-                    .padding(horizontal = 100.dp),
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_circle),
-                    contentDescription = "",
-                    tint = Color.White
-                )
-            }
-
-//            Image(
-//                painter = painterResource(id = R.drawable.ic_avatarka), contentDescription = "",
-//                modifier = Modifier
-//                    .size(80.dp)
-//                    .border(width = 2.dp, shape = CircleShape, color = Color(0xFFC7C7C7))
-//            )
-
-            Icon(
-                painter = painterResource(id = R.drawable.ic_notifications),
-                contentDescription = "",
-                modifier = Modifier
-                    .size(25.dp),
-                tint = Color(0xFF474992)
-            )
-        }
-
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(top = 12.dp)
-        ) {
-            Text(
-                text = viewModelWrapper.viewModel.getUser().name, style = TextStyle(
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight(700),
-                    color = Color(0xFF474992)
-                )
-            )
-            Text(
-                text = "${viewModelWrapper.viewModel.getUser().level} уровень", style = TextStyle(
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight(700),
-                    color = Color(0xFF474992)
-                ),
-                modifier = Modifier.padding(top = 3.dp, bottom = 20.dp)
-            )
-        }
-
-        state.value?.let { CategoryItem(it) }
+        state.value?.let { CategoryItem(it, viewModelWrapper) }
     }
 }
 
@@ -122,7 +53,7 @@ data class TaskData(
 )
 
 @Composable
-fun CategoryItem(value: TaskStats) {
+fun CategoryItem(value: TaskStats, viewModelWrapper: ViewModelWrapper<ProfileViewModel>) {
     val taskFinished = listOf<TaskData>(
         TaskData("Математика", "Изучение математики", value.mathematics, 0),
         TaskData("Логика", "Интресные задачи", value.logic, 1),
@@ -132,6 +63,87 @@ fun CategoryItem(value: TaskStats) {
     )
 
     LazyColumn {
+
+
+        item {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.clip(
+                    RoundedCornerShape(15.dp)
+                )
+            ) {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.Top,
+                    modifier = Modifier
+                        .padding(start = 25.dp, end = 25.dp, top = 50.dp)
+                        .fillMaxWidth()
+                ) {
+
+                    IconButton(
+                        onClick = { viewModelWrapper.viewModel.onSettingsClick() },
+                        modifier = Modifier
+                            .size(25.dp),
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_settings),
+                            contentDescription = "",
+                            tint = Color(0xFF474992)
+                        )
+                    }
+                        Image(
+                            modifier = Modifier
+                                .size(75.dp)
+                                .border(
+                                    width = 2.dp,
+                                    color = Color(0xFFC7C7C7),
+                                    shape = CircleShape
+                                ).clip(CircleShape)
+                                ,
+                            painter = painterResource(id = R.drawable.avatarka),
+                            contentDescription = "",
+                        )
+
+//            Image(
+//                painter = painterResource(id = R.drawable.ic_avatarka), contentDescription = "",
+//                modifier = Modifier
+//                    .size(80.dp)
+//                    .border(width = 2.dp, shape = CircleShape, color = Color(0xFFC7C7C7))
+//            )
+
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_notifications),
+                        contentDescription = "",
+                        modifier = Modifier
+                            .size(25.dp),
+                        tint = Color(0xFF474992)
+                    )
+                }
+
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.padding(top = 12.dp)
+                ) {
+                    Text(
+                        text = viewModelWrapper.viewModel.getUser().name, style = TextStyle(
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight(700),
+                            color = Color(0xFF474992)
+                        )
+                    )
+                    Text(
+                        text = "${viewModelWrapper.viewModel.getUser().level} уровень",
+                        style = TextStyle(
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight(700),
+                            color = Color(0xFF474992)
+                        ),
+                        modifier = Modifier.padding(top = 3.dp, bottom = 20.dp)
+                    )
+                }
+            }
+        }
+
+
         item {
             Text(
                 text = "Завершено", style = TextStyle(
@@ -155,7 +167,12 @@ fun CategoryItem(value: TaskStats) {
                         .padding(start = 16.dp, end = 16.dp, top = 10.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    FinishedItem(item.title, item.description, item.progress, item.progress >= item.isFinished)
+                    FinishedItem(
+                        item.title,
+                        item.description,
+                        item.progress,
+                        item.progress >= item.isFinished
+                    )
                 }
             }
         }
@@ -177,7 +194,12 @@ fun CategoryItem(value: TaskStats) {
                         .padding(vertical = 20.dp)
                         .padding(start = 16.dp, end = 16.dp, top = 10.dp)
                 ) {
-                    FinishedItem(item.title, item.description, item.progress,item.progress >= item.isFinished)
+                    FinishedItem(
+                        item.title,
+                        item.description,
+                        item.progress,
+                        item.progress >= item.isFinished
+                    )
                 }
             }
 //            if (taskFinished.isEmpty()){
