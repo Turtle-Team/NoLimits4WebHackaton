@@ -18,6 +18,7 @@ interface TaskViewModel : KmpViewModel, SubScreenViewModel {
     fun onBackClick()
     fun onNextClick()
     fun onBackAction()
+    fun onFinishTask()
 
 }
 
@@ -45,6 +46,10 @@ class TaskViewModelImpl(
             _state.update { it.copy(stage = _state.value.stage - 1) }
         else
             navigator.navigateBack()
+    }
+
+    override fun onFinishTask() {
+        navigator.navigateToFinishTask()
     }
 }
 

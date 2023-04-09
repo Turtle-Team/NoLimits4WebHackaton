@@ -74,7 +74,7 @@ fun TwoPrimerScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
         Row(horizontalArrangement = Arrangement.Center) {
             Image(
                 painter = painterResource(id = R.drawable.ic_sound), contentDescription = "",
-                modifier = Modifier.padding(bottom = 40.dp, top = 10.dp).clickable {
+                modifier = Modifier.padding(bottom = 10.dp, top = 10.dp).clickable {
                     playAudio(context, R.raw.select_true_answer)
                 }
             )

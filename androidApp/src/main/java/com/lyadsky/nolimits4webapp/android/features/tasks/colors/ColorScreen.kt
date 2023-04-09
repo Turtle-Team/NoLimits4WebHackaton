@@ -1,4 +1,4 @@
-package com.lyadsky.nolimits4webapp.android.features.tasks.logic
+package com.lyadsky.nolimits4webapp.android.features.tasks.colors
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
@@ -12,20 +12,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.lyadsky.nolimits4webapp.android.LocalColors
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
-import com.lyadsky.nolimits4webapp.android.features.tasks.logic.layouts.PutDownCardScreen
-import com.lyadsky.nolimits4webapp.android.features.tasks.logic.layouts.SelectAppleScreen
-import com.lyadsky.nolimits4webapp.android.features.tasks.logic.layouts.SelectBatterflyScreen
+import com.lyadsky.nolimits4webapp.android.features.tasks.colors.layouts.Color1TaskScreen
+import com.lyadsky.nolimits4webapp.android.features.tasks.colors.layouts.Color2TaskScreen
+import com.lyadsky.nolimits4webapp.android.features.tasks.colors.layouts.Color3TaskScreen
 import com.lyadsky.nolimits4webapp.android.features.views.bars.StageBar
 import com.lyadsky.nolimits4webapp.features.tasks.viewModel.TaskViewModel
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.qualifier.named
 
 @Composable
-fun LogicScreen(
+fun ColorScreen(
     viewModelWrapper: ViewModelWrapper<TaskViewModel> =
         getViewModel(named("TaskViewModel"))
 ) {
-
     val state = viewModelWrapper.viewModel.state.collectAsState()
 
     BackHandler {
@@ -40,9 +39,9 @@ fun LogicScreen(
     ) {
         StageBar(Modifier.padding(top = 50.dp), number = state.value.stage, 3)
         when (state.value.stage) {
-            1 -> SelectAppleScreen(viewModelWrapper)
-            2 -> PutDownCardScreen(viewModelWrapper)
-            3 -> SelectBatterflyScreen(viewModelWrapper)
+            1 -> Color1TaskScreen(viewModelWrapper)
+            2 -> Color2TaskScreen(viewModelWrapper)
+            3 -> Color3TaskScreen(viewModelWrapper)
             else -> {}
         }
     }

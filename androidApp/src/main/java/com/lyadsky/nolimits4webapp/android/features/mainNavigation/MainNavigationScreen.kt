@@ -18,7 +18,9 @@ import com.lyadsky.nolimits4webapp.android.features.main.MainScreen
 import com.lyadsky.nolimits4webapp.android.features.profile.ProfileScreen
 import com.lyadsky.nolimits4webapp.android.features.register.RegisterScreens
 import com.lyadsky.nolimits4webapp.android.features.settings.SettingsScreen
+import com.lyadsky.nolimits4webapp.android.features.tasks.FinishTaskScreen
 import com.lyadsky.nolimits4webapp.android.features.tasks.alphabet.AlphabetScreen
+import com.lyadsky.nolimits4webapp.android.features.tasks.colors.ColorScreen
 import com.lyadsky.nolimits4webapp.android.features.tasks.logic.LogicScreen
 import com.lyadsky.nolimits4webapp.android.features.tasks.mathematic.MathematicScreen
 import com.lyadsky.nolimits4webapp.android.features.tasks.numbers.NumberScreen
@@ -95,6 +97,12 @@ fun MainNavigationScreen(
             }
             composable(route = ScreenRoute.Numbers.name) {
                 NumberScreen()
+            }
+            composable(route = ScreenRoute.Colors.name) {
+                ColorScreen()
+            }
+            composable(route = ScreenRoute.FinishTask.name) {
+                FinishTaskScreen()
             }
         }
     }
