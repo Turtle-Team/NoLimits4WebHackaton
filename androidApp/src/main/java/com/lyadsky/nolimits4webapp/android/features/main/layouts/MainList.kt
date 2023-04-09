@@ -175,7 +175,7 @@ fun MainList(viewModelWrapper: ViewModelWrapper<MainViewModel> =
                         color = LocalColors.current.color6
                     )
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { viewModelWrapper.viewModel.navigateToHelicGame() },
                         colors = ButtonDefaults.buttonColors(backgroundColor = LocalColors.current.color5)
                     ) {
                         Text(
@@ -416,77 +416,6 @@ fun MainList(viewModelWrapper: ViewModelWrapper<MainViewModel> =
         }
 
         item {
-            if (age >= 5) {
-                Row(
-                    modifier = Modifier
-                        .padding(top = 30.dp)
-                        .height(138.dp)
-                        .fillMaxWidth()
-                        .shadow(4.dp, RoundedCornerShape(15.dp))
-                        .background(LocalColors.current.background, RoundedCornerShape(15.dp))
-                        .padding(horizontal = 10.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Image(
-                        modifier = Modifier.size(115.dp, 96.dp),
-                        painter = painterResource(id = drawable.ic_english),
-                        contentDescription = ""
-                    )
-
-                    Column(
-                        modifier = Modifier
-                            .align(Alignment.Top)
-                            .weight(1F)
-                            .padding(top = 13.dp)
-                    ) {
-                        Text(
-                            text = "Английский язык",
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight(700),
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                            color = LocalColors.current.color6
-                        )
-                        Text(
-                            text = "Интересные задачи",
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight(700),
-                            color = Color(0xFFD9D9D9)
-                        )
-                    }
-                    Column(
-                        modifier = Modifier
-                            .fillMaxHeight()
-                            .width(70.dp)
-                            .padding(vertical = 13.dp),
-                        horizontalAlignment =
-                        Alignment.End, verticalArrangement = Arrangement.SpaceBetween
-                    ) {
-
-                        Box(
-                            modifier = Modifier
-                                .size(57.dp)
-                                .border(1.dp, Color(0xFFD9D9D9), CircleShape),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            IconButton(
-                                onClick = { viewModelWrapper.viewModel.onAlphabetClick() },
-                                modifier = Modifier.padding(start = 1.dp),
-                            ) {
-                                Icon(
-                                    painter = painterResource(id = drawable.ic_play),
-                                    contentDescription = "",
-                                    tint = LocalColors.current.color5
-                                )
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        item {
             if (age <= 4) {
                 Row(
                     modifier = Modifier
@@ -684,7 +613,7 @@ fun MainList(viewModelWrapper: ViewModelWrapper<MainViewModel> =
                             contentAlignment = Alignment.Center
                         ) {
                             IconButton(
-                                onClick = {  viewModelWrapper.viewModel.onShapeClick()  },
+                                onClick = {  viewModelWrapper.viewModel.onColorClick()  },
                                 modifier = Modifier.padding(start = 1.dp),
                             ) {
                                 Icon(

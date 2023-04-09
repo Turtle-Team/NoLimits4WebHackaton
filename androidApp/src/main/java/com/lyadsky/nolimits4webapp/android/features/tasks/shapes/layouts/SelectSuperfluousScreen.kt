@@ -3,6 +3,7 @@ package com.lyadsky.nolimits4webapp.android.features.tasks.shapes.layouts
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -89,13 +90,17 @@ fun SelectSuperfluousGridItems(imageId: Int, viewModelWrapper: ViewModelWrapper<
                 156.dp,
                 178.dp
             )
-            .padding(top=10.dp)
-            .shadow(4.dp, RoundedCornerShape(15.dp))
-            .background(color, RoundedCornerShape(15.dp))
+            .shadow(if (color == Color.Red) 0.dp else 4.dp, RoundedCornerShape(15.dp))
+            .background(Color.White, RoundedCornerShape(15.dp))
+            .border(
+                width = if (color == Color.Red) 2.dp else 0.dp,
+                color = color,
+                shape = RoundedCornerShape(15.dp)
+            )
             .clickable {
                 if (imageId == R.drawable.ic_star) {
                     color = Color.Green
-                    viewModelWrapper.viewModel.onNextClick()
+                    viewModelWrapper.viewModel.onFinishTask()
                 }else {
                     color =  Color.Red
                 }

@@ -38,7 +38,7 @@ fun LogicScreen(
             .background(LocalColors.current.background),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        StageBar(Modifier.padding(top = 50.dp),number = state.value.stage, 3)
+        StageBar(Modifier.padding(top = 50.dp), number = state.value.stage, 3)
         when (state.value.stage) {
             1 -> SelectAppleScreen(viewModelWrapper)
             2 -> PutDownCardScreen(viewModelWrapper)

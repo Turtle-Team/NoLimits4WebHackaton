@@ -1,24 +1,31 @@
 package com.lyadsky.nolimits4webapp.android.features.mainNavigation
 
+import android.util.Log
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
 import com.lyadsky.nolimits4webapp.android.features.auth.AuthScreen
 import com.lyadsky.nolimits4webapp.android.features.catalog.CatalogScreen
+import com.lyadsky.nolimits4webapp.android.features.helicopterMinigame.HelicopterMinigame
 import com.lyadsky.nolimits4webapp.android.features.main.MainScreen
 import com.lyadsky.nolimits4webapp.android.features.profile.ProfileScreen
 import com.lyadsky.nolimits4webapp.android.features.register.RegisterScreens
 import com.lyadsky.nolimits4webapp.android.features.settings.SettingsScreen
+import com.lyadsky.nolimits4webapp.android.features.tasks.FinishTaskScreen
 import com.lyadsky.nolimits4webapp.android.features.tasks.alphabet.AlphabetScreen
+import com.lyadsky.nolimits4webapp.android.features.tasks.colors.ColorScreen
 import com.lyadsky.nolimits4webapp.android.features.tasks.logic.LogicScreen
 import com.lyadsky.nolimits4webapp.android.features.tasks.mathematic.MathematicScreen
 import com.lyadsky.nolimits4webapp.android.features.tasks.numbers.NumberScreen
@@ -44,6 +51,16 @@ fun MainNavigationScreen(
         viewModelWrapper.viewModel.onViewShown()
         onDispose { viewModelWrapper.viewModel.onViewHidden() }
     }
+    val uiContr =  rememberSystemUiController()
+    LaunchedEffect(key1 = currentRoute, block = {
+        when(currentRoute){
+            ScreenRoute.Helicopter.name -> uiContr.setStatusBarColor(Color(0xFF66DFE7))
+            else -> {
+                uiContr.setStatusBarColor(Color.White)
+            }
+        }
+    })
+
     Scaffold(
         bottomBar = {
             val isMainScreen = bottomNavigationItems.any { it.route.name == currentRoute }
@@ -72,9 +89,6 @@ fun MainNavigationScreen(
             composable(route = ScreenRoute.Register.name) {
                 RegisterScreens()
             }
-            composable(route = ScreenRoute.Welcome.name) {
-                WelcomeScreen()
-            }
             composable(route = ScreenRoute.Catalog.name) {
                 CatalogScreen()
             }
@@ -93,8 +107,17 @@ fun MainNavigationScreen(
             composable(route = ScreenRoute.Mathematic.name) {
                 MathematicScreen()
             }
+            composable(route = ScreenRoute.Helicopter.name) {
+                HelicopterMinigame()
+            }
             composable(route = ScreenRoute.Numbers.name) {
                 NumberScreen()
+            }
+            composable(route = ScreenRoute.Colors.name) {
+                ColorScreen()
+            }
+            composable(route = ScreenRoute.FinishTask.name) {
+                FinishTaskScreen()
             }
         }
     }

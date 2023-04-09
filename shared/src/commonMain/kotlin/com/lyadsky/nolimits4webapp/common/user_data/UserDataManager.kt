@@ -1,10 +1,21 @@
 package com.lyadsky.nolimits4webapp.common.user_data
 
+import kotlinx.serialization.Serializable
+
+
+@Serializable
+data class User(
+    val name: String,
+    val age: Int,
+    val isMale: Boolean,
+//    val interesting: List<String>
+)
+
 expect interface NativeUserData
 
 interface UserDataManager: NativeUserData {
 
-    fun getUserData(): String
+    fun getUserData(): User
 
     fun clearData()
 }

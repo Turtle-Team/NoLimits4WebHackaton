@@ -2,19 +2,24 @@ package com.lyadsky.nolimits4webapp.android.features.register.layouts
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -22,10 +27,16 @@ import androidx.compose.ui.zIndex
 import com.lyadsky.nolimits4webapp.android.LocalColors
 import com.lyadsky.nolimits4webapp.android.R
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
+import com.lyadsky.nolimits4webapp.android.features.catalog.layouts.Chapter
+import com.lyadsky.nolimits4webapp.android.features.catalog.layouts.ChapterItem
 import com.lyadsky.nolimits4webapp.android.features.views.buttons.CommonButton
+import com.lyadsky.nolimits4webapp.android.font
 import com.lyadsky.nolimits4webapp.common.user_data.UserDataManager
+import com.lyadsky.nolimits4webapp.features.catalog.viewModel.CatalogViewModel
 import com.lyadsky.nolimits4webapp.features.register.viewModel.RegisterViewModel
 import org.koin.androidx.compose.get
+import org.koin.androidx.compose.getViewModel
+import org.koin.core.qualifier.named
 
 @Composable
 fun HobbiesScreen(
@@ -34,6 +45,15 @@ fun HobbiesScreen(
 ) {
 
     val isHorizontal = LocalConfiguration.current.orientation == 2
+
+    val chapterList = listOf(
+        Chapter(R.drawable.ic_alphabet, "Алфавит"),
+        Chapter(R.drawable.ic_logic, "Логика"),
+        Chapter(R.drawable.ic_numbers, "Цифры"),
+        Chapter(R.drawable.ic_forms, "Формы"),
+        Chapter(R.drawable.ic_matematic, "Математика"),
+        Chapter(R.drawable.ic_colors, "Цвета"),
+    )
 
     Column(
         modifier = Modifier
@@ -50,53 +70,66 @@ fun HobbiesScreen(
         )
 
         LazyVerticalGrid(
-            columns = GridCells.Fixed(if (isHorizontal) 4 else 2),
-            contentPadding = PaddingValues(bottom = 40.dp,start = 16.dp, end = 16.dp),
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+                .padding(top = 20.dp),
+            columns = GridCells.Adaptive(150.dp),
+            horizontalArrangement = Arrangement.Center
         ) {
-            //TODO
-            items(count = 20) {
-                GridItems()
-            }
-
-            item(span = { GridItemSpan(if (isHorizontal) 4 else 2) }) {
-                CommonButton(text = "Создать") {
-                    userData.saveAuthData("zaglushka vremennaya")
-                    viewModelWrapper.viewModel.onNextClick()
+            items(items = chapterList) { item ->
+                Column(Modifier.padding(top = 10.dp, bottom = 10.dp, start = 16.dp, end = 16.dp)) {
+                    LikeChapterItem(chapter = item)
                 }
             }
-        }
-        CommonButton(text = "Создать") {
-            viewModelWrapper.viewModel.onNextClick()
         }
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun GridItems() {
-    Column(
-        modifier = Modifier
-            .size(
-                156.dp,
-                178.dp
-            )
-            .shadow(4.dp, RoundedCornerShape(15.dp))
-            .background(Color.White, RoundedCornerShape(15.dp)),
-        horizontalAlignment = Alignment.CenterHorizontally
+fun LikeChapterItem(
+    chapter: Chapter, viewModelWrapper: ViewModelWrapper<CatalogViewModel> =
+        getViewModel(named("CatalogViewModel"))
+) {
+    var color by remember {
+        mutableStateOf(Color.White)
+    }
+
+    Card(
+        modifier = Modifier.border(
+            width = 2.dp,
+            color = color,
+            shape = RoundedCornerShape(15.dp)
+        ),
+        elevation = 3.dp,
+        shape = RoundedCornerShape(15.dp),
+        onClick = {
+            color = if (color == Color.White){
+                Color(0xFF9094FB)
+            } else {
+                Color.White
+            }
+        }
     ) {
-        Image(
-            modifier = Modifier.size(126.dp),
-            painter = painterResource(id = R.drawable.monkey_clown),
-            contentDescription = ""
-        )
-        Text(
-            text = "Алфавит",
-            fontSize = 24.sp,
-            fontWeight = FontWeight(700),
-            color = LocalColors.current.color6
-        )
+        Column(
+            Modifier.padding(15.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Image(
+                painter = painterResource(id = chapter.imageId), contentDescription = "",
+                modifier = Modifier
+                    .size(125.dp)
+            )
+            Text(
+                text = chapter.title, style = TextStyle(
+                    fontFamily = font,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight(700),
+                    color = Color(0xFF474992)
+                )
+            )
+        }
     }
 }

@@ -24,8 +24,8 @@ class SettingsViewModelImpl(
     }
 
     override fun onExitAccount() {
+        navigator.signOut()
         userDataManager.clearData()
-        navigator.navigateToWelcome(true)
     }
 }
 
