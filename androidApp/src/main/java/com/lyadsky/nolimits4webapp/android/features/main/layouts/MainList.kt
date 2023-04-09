@@ -175,7 +175,7 @@ fun MainList(viewModelWrapper: ViewModelWrapper<MainViewModel> =
                         color = LocalColors.current.color6
                     )
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { viewModelWrapper.viewModel.navigateToHelicGame() },
                         colors = ButtonDefaults.buttonColors(backgroundColor = LocalColors.current.color5)
                     ) {
                         Text(

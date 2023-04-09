@@ -1,0 +1,26 @@
+CREATE TABLE Tasks (
+    alphabet INTEGER NOT NULL,
+    logic INTEGER NOT NULL,
+    numbers INTEGER NOT NULL,
+    figures INTEGER NOT NULL,
+    mathematics INTEGER NOT NULL,
+    colors INTEGER NOT NULL,
+    english INTEGER NOT NULL,
+    helicopter INTEGER NOT NULL
+);
+
+saveStatistics:
+INSERT OR REPLACE INTO Tasks(
+   alphabet,
+   logic ,
+   numbers ,
+   figures ,
+   mathematics ,
+   colors ,
+   english,
+   helicopter
+)
+VALUES(?,?,?,?,?,?,?,?);
+
+getAllStats:
+SELECT * FROM Tasks;
