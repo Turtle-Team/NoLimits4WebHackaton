@@ -25,6 +25,9 @@ import com.lyadsky.nolimits4webapp.android.LocalColors
 import com.lyadsky.nolimits4webapp.android.MainActivity
 import com.lyadsky.nolimits4webapp.android.R
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
+import com.lyadsky.nolimits4webapp.android.features.views.bars.CommonTopBar
+import com.lyadsky.nolimits4webapp.android.features.views.buttons.CommonButton
+import com.lyadsky.nolimits4webapp.android.features.views.edit_texts.CommonEditText
 import com.lyadsky.nolimits4webapp.features.tasks.viewModel.TaskViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -43,51 +46,50 @@ fun OnePrimerScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
             text = "Нарисуй нужное число в поле внизу или скажи ответ в микрофон",
             fontSize = 24.sp,
             fontWeight = FontWeight(700),
-            color = LocalColors.current.color6
+            color = LocalColors.current.color6,
+            modifier = Modifier.padding(horizontal = 16.dp)
         )
 
-//        val startLauncher = rememberLauncherForActivityResult(
-//            contract = ActivityResultContracts.StartActivityForResult()
-//        ) {
-//            if (it.resultCode == Activity.RESULT_OK) {
-//                val result = it.data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
-//                viewModelWrapper.viewModel.onSearchChange(result?.get(0).toString())
-//                viewModelWrapper.viewModel.onSearchClick()
-//            }
-//        }
+        LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
 
-        LazyColumn {
-
-//            item {
-//                Text(
-//                    text = "... + 5 = 10",
-//                    fontSize = 48.sp,
-//                    fontWeight = FontWeight(700),
-//                    color = LocalColors.current.color6,
-//                    modifier = Modifier.padding(top = 45.dp)
-//                )
-//            }
-//            item {
-//                Image(
-//                    painter = painterResource(id = R.drawable.ic_matematic), contentDescription = "",
-////            modifier = Modifier.padding(top = 47.dp)
-//                )
-//            }
+            item {
+                Text(
+                    text = "... + 5 = 10",
+                    fontSize = 48.sp,
+                    fontWeight = FontWeight(700),
+                    color = LocalColors.current.color6,
+                    modifier = Modifier.padding(top = 25.dp)
+                )
+            }
+            item {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_matematic),
+                    contentDescription = "",
+                    modifier = Modifier.padding(top = 47.dp)
+                )
+            }
+            item {
+                CommonButton(
+                    text = "Далее",
+                    width = 200,
+                    height = 80,
+                    modifier = Modifier.padding(top = 20.dp)
+                ) {
+                    viewModelWrapper.viewModel.onNextClick()
+                }
+            }
         }
 
         Row(horizontalArrangement = Arrangement.Center) {
             Image(
                 painter = painterResource(id = R.drawable.ic_sound), contentDescription = "",
-                modifier = Modifier.padding(bottom = 70.dp)
+                modifier = Modifier.padding(bottom = 40.dp)
+            )
+
+            Image(
+                painter = painterResource(id = R.drawable.ic_micro), contentDescription = "",
+                modifier = Modifier.padding(bottom = 40.dp, start = 174.dp)
             )
         }
     }
-}
-
-@Composable
-fun SpeakableText(text: String, textToSpeech: TextToSpeech) {
-    Text(
-        text = text,
-        modifier = Modifier.clickable { textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null) }
-    )
 }

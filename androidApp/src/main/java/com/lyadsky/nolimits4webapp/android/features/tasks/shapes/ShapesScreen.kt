@@ -16,6 +16,7 @@ import com.lyadsky.nolimits4webapp.android.features.tasks.logic.layouts.PutDownC
 import com.lyadsky.nolimits4webapp.android.features.tasks.logic.layouts.SelectAppleScreen
 import com.lyadsky.nolimits4webapp.android.features.tasks.logic.layouts.SelectBatterflyScreen
 import com.lyadsky.nolimits4webapp.android.features.tasks.shapes.layouts.AppleFormScreen
+import com.lyadsky.nolimits4webapp.android.features.tasks.shapes.layouts.PredmetConturScreen
 import com.lyadsky.nolimits4webapp.android.features.tasks.shapes.layouts.SelectSuperfluousScreen
 import com.lyadsky.nolimits4webapp.android.features.views.bars.StageBar
 import com.lyadsky.nolimits4webapp.features.tasks.viewModel.TaskViewModel
@@ -42,7 +43,7 @@ fun ShapesScreen(
         StageBar(Modifier.padding(top = 50.dp),number = state.value.stage, 3)
         when (state.value.stage) {
             1 -> AppleFormScreen(viewModelWrapper)
-            2 -> PutDownCardScreen(viewModelWrapper)
+            2 -> PredmetConturScreen(viewModelWrapper)
             3 -> SelectSuperfluousScreen(viewModelWrapper)
             else -> {}
         }

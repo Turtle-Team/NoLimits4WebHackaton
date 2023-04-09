@@ -24,14 +24,16 @@ import com.lyadsky.nolimits4webapp.android.font
 fun CommonButton(
     modifier: Modifier = Modifier,
     text: String,
+    width: Int? = 330,
+    height: Int? = 50,
     color: Color? = Color(0xFF9094FB),
     onClick: () -> Unit?,
 ) {
     Button(
         modifier = Modifier
-            .width(330.dp)
+            .width(width!!.dp)
             .clip(RoundedCornerShape(15.dp))
-            .height(50.dp).then(modifier),
+            .height(height!!.dp).then(modifier),
         onClick = { onClick() },
         shape = RoundedCornerShape(15.dp),
         colors = ButtonDefaults.buttonColors(
