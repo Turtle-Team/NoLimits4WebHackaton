@@ -75,14 +75,15 @@ fun HobbiesScreen(
                 .fillMaxHeight()
                 .padding(top = 20.dp),
             columns = GridCells.Adaptive(150.dp),
-            horizontalArrangement = Arrangement.Center
+            horizontalArrangement = Arrangement.Center,
+            contentPadding = PaddingValues(bottom = 30.dp, start = 16.dp, end = 16.dp)
         ) {
             items(items = chapterList) { item ->
                 Column(Modifier.padding(top = 10.dp, bottom = 10.dp, start = 16.dp, end = 16.dp)) {
                     LikeChapterItem(chapter = item)
                 }
             }
-            item {
+            item(span = { GridItemSpan(maxCurrentLineSpan)}) {
                 CommonButton(text = "Создать") {
                     viewModelWrapper.viewModel.onNextClick()
                 }
