@@ -1062,11 +1062,34 @@ fun LetterItem(letter: String, onClick: () -> Unit) {
                     Text(
                         text = letter, style = TextStyle(
                             fontFamily = font,
-                            fontSize = 20.sp,
+                            fontSize = 64.sp,
                             fontWeight = FontWeight(700),
                             color = Color(0xFF474992)
                         )
                     )
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(top = 50.dp)
+                    ) {
+                        Text(
+                            text = letter, style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFF474992)
+                            )
+                        )
+                        Text(
+                            text = "Баръян", style = TextStyle(
+                                fontFamily = font,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                                color = Color(0xFFCAC0C9)
+                            ),
+                            modifier = Modifier.padding(start = 30.dp)
+                        )
+                    }
                 }
                 "Ыы" -> {
                     Image(
