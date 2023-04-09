@@ -238,13 +238,11 @@ fun FinishedItem(title: String, description: String, progress: Int, isFinished: 
                     ),
                     modifier = Modifier.padding(top = 5.dp)
                 )
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_progress), contentDescription = "",
+                Box(
                     modifier = Modifier
                         .padding(top = 26.dp, bottom = 26.dp, end = 35.dp)
                         .width(167.dp)
                         .height(14.dp),
-                    tint = Color(0xFFFB7FA4)
                 )
             }
         }

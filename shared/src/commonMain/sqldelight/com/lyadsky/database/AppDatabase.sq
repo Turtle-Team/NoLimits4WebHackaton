@@ -24,3 +24,20 @@ VALUES(?,?,?,?,?,?,?,?);
 
 getAllStats:
 SELECT * FROM Tasks;
+
+CREATE TABLE UserData (
+    name TEXT NOT NULL,
+    age INTEGER NOT NULL,
+    isMale INTEGER NOT NULL
+);
+
+saveUser:
+INSERT OR REPLACE INTO UserData (
+    name,
+    age,
+    isMale
+)
+VALUES(?,?,?);
+
+getUser:
+SELECT * FROM UserData;

@@ -9,13 +9,14 @@ import com.lyadsky.nolimits4webapp.android.features.mainNavigation.MainNavigatio
 import com.lyadsky.nolimits4webapp.android.navigation.AndroidNavigator
 import com.lyadsky.nolimits4webapp.common.navigation.ScreenRoute
 import com.lyadsky.nolimits4webapp.common.user_data.UserDataManager
+import com.lyadsky.nolimits4webapp.data.AppDatabaseRepostitory
 import org.koin.android.ext.android.inject
 import java.util.*
 
 class MainActivity : ComponentActivity() {
 
     private val rootNavigation: AndroidNavigator by inject()
-    private val userData: UserDataManager by inject()
+    private val userDao: AppDatabaseRepostitory by inject()
 
     private lateinit var textToSpeech: TextToSpeech
 
@@ -53,8 +54,8 @@ class MainActivity : ComponentActivity() {
 
     private fun defineStartDestination(): ScreenRoute {
         return try {
-            val user = userData.getUserData()
-            if (user.name.isNotEmpty())
+            val user = userDao.getUser()
+            if (user != null && user.name.isNotEmpty())
                 ScreenRoute.Main
             else
                 ScreenRoute.Register

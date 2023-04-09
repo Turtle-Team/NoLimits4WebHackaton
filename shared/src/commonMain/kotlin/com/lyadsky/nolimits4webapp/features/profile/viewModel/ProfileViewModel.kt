@@ -21,7 +21,7 @@ interface ProfileViewModel : StatefulKmpViewModel<TaskStats?>, SubScreenViewMode
 class ProfileViewModelImpl(
     override val navigator: Navigator,
     private val userDataManager: UserDataManager,
-    dao: AppDatabaseRepostitory
+    private val dao: AppDatabaseRepostitory
 ) : KoinComponent, KmpViewModelImpl(), ProfileViewModel {
 
 
@@ -33,7 +33,7 @@ class ProfileViewModelImpl(
         navigator.navigateToSettings()
     }
 
-    override fun getUser(): User = userDataManager.getUserData()
+    override fun getUser(): User = dao.getUser() ?: User("",0,true)
 
 }
 
