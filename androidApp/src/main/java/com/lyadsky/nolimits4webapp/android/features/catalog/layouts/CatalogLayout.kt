@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lyadsky.nolimits4webapp.android.R
@@ -115,7 +116,9 @@ fun ChapterItem(
                     fontSize = 20.sp,
                     fontWeight = FontWeight(700),
                     color = Color(0xFF474992)
-                )
+                ),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
         }
     }
