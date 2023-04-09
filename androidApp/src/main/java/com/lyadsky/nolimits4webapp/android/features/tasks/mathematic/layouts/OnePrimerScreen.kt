@@ -25,6 +25,7 @@ import com.lyadsky.nolimits4webapp.android.LocalColors
 import com.lyadsky.nolimits4webapp.android.R
 import com.lyadsky.nolimits4webapp.android.di.ViewModelWrapper
 import com.lyadsky.nolimits4webapp.android.features.views.buttons.CommonButton
+import com.lyadsky.nolimits4webapp.android.utils.playAudio
 import com.lyadsky.nolimits4webapp.features.tasks.viewModel.TaskViewModel
 
 @Composable
@@ -54,6 +55,7 @@ fun OnePrimerScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
                 )
             }
         }
+        val context = LocalContext.current
         LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
 
             item {
@@ -83,25 +85,39 @@ fun OnePrimerScreen(viewModelWrapper: ViewModelWrapper<TaskViewModel>) {
                 }
             }
 
+//            item {
+//                Row(horizontalArrangement = Arrangement.Center) {
+//                    val context = LocalContext.current
+//                    Image(
+//                        painter = painterResource(id = R.drawable.ic_sound),
+//                        contentDescription = "",
+//                        modifier = Modifier
+//                            .padding(bottom = 70.dp)
+//                            .clickable(
+//                                MutableInteractionSource(),
+//                                indication = rememberRipple(bounded = true)
+//                            ) {
+//
+//
+//                            }
+//                    )
+//                }
+//            }
 
-            item {
-                Row(horizontalArrangement = Arrangement.Center) {
-                    val context = LocalContext.current
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_sound),
-                        contentDescription = "",
-                        modifier = Modifier
-                            .padding(bottom = 70.dp)
-                            .clickable(
-                                MutableInteractionSource(),
-                                indication = rememberRipple(bounded = true)
-                            ) {
 
-                                startLauncher.launch(Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH))
-                            }
-                    )
+        }
+        Row(horizontalArrangement = Arrangement.Center) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_sound), contentDescription = "",
+                modifier = Modifier.padding(bottom = 10.dp).clickable { playAudio(context, R.raw.draw_number) }
+            )
+
+            Image(
+                painter = painterResource(id = R.drawable.ic_micro), contentDescription = "",
+                modifier = Modifier.padding(bottom = 10.dp, start = 174.dp).clickable {
+                    startLauncher.launch(Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH))
                 }
-            }
+            )
         }
     }
 }
