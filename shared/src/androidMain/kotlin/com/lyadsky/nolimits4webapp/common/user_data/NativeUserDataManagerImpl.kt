@@ -26,7 +26,11 @@ actual class NativeUserDataManagerImpl(private val context: Context) : KoinCompo
 
         //TODO когда будет модель пользователя заменить String на этот дата класс
         val encodedData = prefs.getString(USER_DATA, def_val)
-        return json.decodeFromString<User>(User.serializer(), encodedData ?: def_val)
+        return try {
+            json.decodeFromString<User>(User.serializer(), encodedData ?: def_val)
+        } catch (e: Throwable) {
+            User("",0,true)
+        }
 
     }
 

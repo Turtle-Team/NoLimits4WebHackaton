@@ -66,7 +66,11 @@ fun ProfileLayout(
                     .border(width = 2.dp, color = Color(0xFFC7C7C7), shape = CircleShape)
                     .padding(horizontal = 100.dp),
             ) {
-                Icon(painter = painterResource(id = R.drawable.ic_circle), contentDescription = "", tint = Color.White)
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_circle),
+                    contentDescription = "",
+                    tint = Color.White
+                )
             }
 
 //            Image(
@@ -106,12 +110,6 @@ fun ProfileLayout(
             )
         }
 
-        val taskFinished = listOf<TaskData>(
-            TaskData("Алфавит", "Изучение алфавита", 100, true),
-            TaskData("Математика", "Изучение алфавита", 25, false),
-            TaskData("Физика", "Изучение алфавита", 75, true),
-        )
-
         state.value?.let { CategoryItem(it) }
     }
 }
@@ -120,19 +118,19 @@ data class TaskData(
     val title: String,
     val description: String,
     val progress: Int,
-    val isFinished: Boolean
+    val isFinished: Int
 )
 
 @Composable
 fun CategoryItem(value: TaskStats) {
     val taskFinished = listOf<TaskData>(
-        TaskData("Алфавит", "Изучение алфавита", value.alphabet, true),
-        TaskData("Математика", "Изучение алфавита", value.mathematics, false),
-        TaskData("Логика", "Изучение алфавита", value.logic, true),
-        TaskData("Цифры", "Изучение алфавита", value.numbers, false),
-        TaskData("Формы", "Изучение алфавита", value.figures, true),
-        TaskData("Цвета", "Изучение алфавита", value.colors, true),
-        TaskData("Английский", "Изучение алфавита", value.english, false),
+        TaskData("Алфавит", "Изучение алфавита", value.alphabet, 0),
+        TaskData("Математика", "Изучение алфавита", value.mathematics, 3),
+        TaskData("Логика", "Изучение алфавита", value.logic, 3),
+        TaskData("Цифры", "Изучение алфавита", value.numbers, 3),
+        TaskData("Формы", "Изучение алфавита", value.figures, 3),
+        TaskData("Цвета", "Изучение алфавита", value.colors, 3),
+        TaskData("Английский", "Изучение алфавита", value.english, 0),
     )
 
     LazyColumn {
@@ -152,14 +150,14 @@ fun CategoryItem(value: TaskStats) {
 //                EmptyItem()
 //                Log.e("asd", "askdj")
 //            }
-            if (item.isFinished) {
+            if (item.progress >= item.isFinished) {
                 Column(
                     Modifier
                         .padding(vertical = 20.dp)
                         .padding(start = 16.dp, end = 16.dp, top = 10.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    FinishedItem(item.title, item.description, item.progress, item.isFinished)
+                    FinishedItem(item.title, item.description, item.progress, item.progress >= item.isFinished)
                 }
             }
         }
@@ -175,13 +173,13 @@ fun CategoryItem(value: TaskStats) {
             )
         }
         items(items = taskFinished) { item ->
-            if (!item.isFinished) {
+            if (item.progress < item.isFinished) {
                 Column(
                     Modifier
                         .padding(vertical = 20.dp)
                         .padding(start = 16.dp, end = 16.dp, top = 10.dp)
                 ) {
-                    FinishedItem(item.title, item.description, item.progress, item.isFinished)
+                    FinishedItem(item.title, item.description, item.progress,item.progress >= item.isFinished)
                 }
             }
 //            if (taskFinished.isEmpty()){
